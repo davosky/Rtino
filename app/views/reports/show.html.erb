@@ -1,0 +1,32 @@
+<h3>
+  <%= inline_svg('report_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<strong class="text-primary">Report # <%= @report.name %></strong>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to reports_path, title: 'Back to the List', rel: 'tooltip' do %>
+        <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to edit_report_path(@report), title: 'Edit the current Location', rel: 'tooltip' do %>
+        <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to @report, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete the current Location', rel: 'tooltip' do %>
+        <i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class="hr-primary">
+<br>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <div>
+      <span class="text-primary">Date: </span><strong><%= l(@report.date, format: '%A %d %B %Y') %></strong>
+      &nbsp;
+      <span class="text-primary">Location: </span><strong><%= @report.location.name %></strong>
+      &nbsp;
+      <span class="text-primary">Structure: </span><strong><%= @report.structure.name %></strong>
+    </div>
+  </div>
+</div>

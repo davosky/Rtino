@@ -1,0 +1,15 @@
+<h3>
+  <%= inline_svg('structure_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<strong class="text-primary">Create a New Structure</strong>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to structures_path do %>
+        <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class="hr-primary">
+<br>
+<%= render 'form', structure: @structure %>
+<br>

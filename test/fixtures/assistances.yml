@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 1
+  report: one
+  start_time: 2019-09-10 09:41:50
+  end_time: 2019-09-10 09:41:50
+  description: MyText
+  note: MyText
+  category: one
+  office: one
+
+two:
+  name: 1
+  report: two
+  start_time: 2019-09-10 09:41:50
+  end_time: 2019-09-10 09:41:50
+  description: MyText
+  note: MyText
+  category: two
+  office: two

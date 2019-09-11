@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  username: Rtino
+  password: Dfr368qE
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: Rtino_development
+
+test:
+  <<: *default
+  database: Rtino_test
+
+production:
+  <<: *default
+  database: Rtino_production

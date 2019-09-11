@@ -1,0 +1,53 @@
+<h3>
+  <%= inline_svg('report_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<strong class="text-primary">Reports</strong>
+  <span class='pull-right'>
+    <h6>
+      <% if admin? %>
+        <%= link_to new_report_path do %>
+          <%= inline_svg('report_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+          New Report
+        <% end %>
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class="hr-primary">
+<br>
+<div class='container-fluid'>
+  <% @reports.each_slice(3)  do |reports| %>
+    <div class='row'>
+      <% reports.each  do |report| %>
+        <div class='col-lg-4'>
+          <div class='panel panel-primary'>
+            <div class='panel-body'>
+            <%= inline_svg('report_icon.svg', size: '15px * 15px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              <%= link_to report do %>
+                <span class="label label-primary label-lite">
+                  &nbsp;Report #&nbsp;&nbsp;<%= t(report.name) %>
+                </span>
+              <% end %>
+              <span class="pull-right">
+                <small class="text-primary">
+                  <i class="far fa-calendar-alt"></i>&nbsp;
+                  <%= l(report.date, format: '%A %d %B %Y') %>
+                </small>
+              </span>
+              <hr class="hr-gray-lighter-less">
+              <span class="pull-left">
+                <small><i class="fas fa-map-marker-alt"></i>&nbsp;<%= report.location.name %></small>
+              </span>
+              <span class="pull-right">
+                <small><i class="far fa-building"></i>&nbsp;<%= report.structure.name %></small>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
+  <span class="text-centered">
+    <%= will_paginate @reports, renderer: BootstrapPagination::Rails %>
+  </span>
+</div>
