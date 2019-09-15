@@ -1,2 +1,18 @@
-<h1>Home#about</h1>
-<p>Find me in app/views/home/about.html.erb</p>
+<h4 class='text-info'>
+    Autore
+</h4>
+<hr class='hr-gray-lighter-less'>
+<h3 class='text-primary'>
+    Davo Davosky
+</h3>
+<br>
+<p>
+    <small>Sysadmin & Programmatore RubyOnRails <span class='text-grey'>(sto cercando di diventarlo)</span></small>
+</p>
+<br>
+<p>
+    <%= mail_to 'davodavosky@gmail.com', title: 'Scrivi a Davo :-)' do %>
+        <%= inline_svg('davosky_logo_2019.svg', size: '512px * 144px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+    <% end %>
+</p>
+

@@ -7,6 +7,48 @@ RailsAdmin.config do |config|
 
   config.main_app_name = ["Rtino"]
 
+  config.model "User" do
+    visible true
+    label "Utente"
+    label_plural "Utenti"
+  end
+
+  config.model "Report" do
+    visible true
+    label "Rapporto"
+    label_plural "Rapporti"
+  end
+
+  config.model "Assistance" do
+    visible true
+    label "Assistenza"
+    label_plural "Assistenze"
+  end
+
+  config.model "Location" do
+    visible true
+    label "Posizione"
+    label_plural "Posizioni"
+  end
+
+  config.model "Structure" do
+    visible true
+    label "Struttura"
+    label_plural "Strutture"
+  end
+
+  config.model "Office" do
+    visible true
+    label "Ufficio"
+    label_plural "Uffici"
+  end
+
+  config.model "Category" do
+    visible true
+    label "Categoria"
+    label_plural "Categorie"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

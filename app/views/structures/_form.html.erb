@@ -1,7 +1,7 @@
 <%= form_with(model: structure, local: true) do |f| %>
   <% if structure.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(structure.errors.count, "error") %> prohibited this structure from being saved:</h2>
+    <div id='error_explanation'>
+      <h2><%= pluralize(structure.errors.count, 'error') %> Non posso salvare la seguente Struttura causa errori:</h2>
       <ul>
         <% structure.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -9,18 +9,18 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name, class: 'text-primary' %>
+  <div class='field'>
+    <%= f.label :name, class: 'text-primary font-lite' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :position, class: 'text-primary' %>
+  <div class='field'>
+    <%= f.label :position, class: 'text-primary font-lite' %>
     <%= f.number_field :position, class: 'form-control' %>
   </div>
   <br>
   <div class='form-group'>
     <%= button_tag(type: 'submit', class: 'btn btn-success btn-sm') do %>
-      <i class="fas fa-save"></i>&nbsp;&nbsp;Save
+      <i class='fas fa-save font-lite'></i>&nbsp;&nbsp;SALVA
     <% end %>
   </div>
 <% end %>

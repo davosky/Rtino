@@ -1,32 +1,61 @@
 <h3>
   <%= inline_svg('report_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
-  &nbsp;<strong class="text-primary">Report # <%= @report.name %></strong>
+  &nbsp;<span class='text-primary'>Rapporto n°:&nbsp;<%= @report.name %></span>
   <span class='pull-right'>
     <h6>
       <%= link_to reports_path, title: 'Back to the List', rel: 'tooltip' do %>
-        <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
       <% end %>
       &nbsp;|&nbsp;
       <%= link_to edit_report_path(@report), title: 'Edit the current Location', rel: 'tooltip' do %>
-        <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
+        <span class='text-warning'><i class='fas fa-pencil-alt'></i></span>&nbsp;&nbsp;Modifica
       <% end %>
       &nbsp;|&nbsp;
-      <%= link_to @report, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete the current Location', rel: 'tooltip' do %>
-        <i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete
+      <%= link_to @report, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare il Rapporto corrente?' }, title: 'Delete the current Location', rel: 'tooltip' do %>
+        <span class='text-danger'><i class='fas fa-trash-alt'></i></span>&nbsp;&nbsp;Elimina
       <% end %>
     </h6>
   </span>
 </h3>
-<hr class="hr-primary">
+<hr class='hr-primary'>
 <br>
-<div class="panel panel-primary">
-  <div class="panel-body">
+<div class='panel panel-primary'>
+  <div class='panel-body'>
     <div>
-      <span class="text-primary">Date: </span><strong><%= l(@report.date, format: '%A %d %B %Y') %></strong>
+      <span class='text-primary'>Data: </span><span class="label label-primary font-lite"><%= l(@report.date, format: '%A %d %B %Y') %></span>
       &nbsp;
-      <span class="text-primary">Location: </span><strong><%= @report.location.name %></strong>
+      <span class='text-primary'>Posizione: </span><span class="label label-primary font-lite"><%= location?(@report) %></span>
       &nbsp;
-      <span class="text-primary">Structure: </span><strong><%= @report.structure.name %></strong>
+      <span class='text-primary'>Struttura: </span><span class="label label-primary font-lite"><%= structure?(@report) %></span>
     </div>
   </div>
 </div>
+<br>
+<h4>
+  <span class='text-info'>
+    <i class='fas fa-wrench'></i>&nbsp;Assistenze
+  </span>
+</h4>
+<% @report.assistances.each  do |assistance| %>
+  <div class='panel panel-info'>
+    <div class='panel-body'>
+      <span class='text-info'>Ora Inizio:</span>&nbsp;<span class="label label-info font-lite"><%= l(assistance.start_time, format: '%H : %M') %></span>
+      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>Ora Fine:</span>&nbsp;<span class="label label-info font-lite"><%= l(assistance.end_time, format: '%H : %M') %></span>
+      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>Ufficio:</span>&nbsp;<span class="label label-info font-lite"><%= office?(assistance) %></span>
+      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>Categoria:</span>&nbsp;<span class="label label-info font-lite"><%= category?(assistance) %></span>
+      <br>
+      <br>
+      <span class='text-info'>Descrizione:</span>&nbsp;
+      <hr class='hr-info'>
+      <%= assistance.description %>
+      <br>
+      <br>
+      <span class='text-info'>Note:</span>&nbsp;
+      <hr class='hr-info'>
+      <%= assistance.note %>
+    </div>
+  </div>
+<% end %>

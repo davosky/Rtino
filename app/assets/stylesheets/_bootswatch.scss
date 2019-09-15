@@ -15,12 +15,28 @@ a:hover {
   text-decoration: none;
 }
 
+.font-lite {
+  font-weight: 300;
+}
+
 .link-awesome {
   color: $link-awesome;
 }
 
+.link-return {
+  color: $link-return;
+}
+
+.link-view {
+  color: $link-view;
+}
+
 .text-centered {
   text-align: center;
+}
+
+.text-grey {
+  color: $gray-light;
 }
 
 .hr-primary {
@@ -32,11 +48,20 @@ a:hover {
   padding: 0; 
 }
 
+.hr-info {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid $brand-info;
+  margin: 1em 0;
+  padding: 0; 
+}
+
 .hr-gray-lighter-less {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #cdcdcd;
   margin: 1em 0;
   padding: 0; 
 }
@@ -48,6 +73,7 @@ a:hover {
 // Navbar =====================================================================
 
 .navbar {
+  border: none;
 
   &-inverse {
 

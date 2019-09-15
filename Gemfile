@@ -6,6 +6,7 @@ ruby '2.6.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'cocoon', '~> 1.2', '>= 1.2.14'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'devise-i18n', '~> 1.7'

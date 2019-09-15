@@ -1,29 +1,50 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Offices</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @offices.each do |office| %>
-      <tr>
-        <td><%= office.name %></td>
-        <td><%= office.position %></td>
-        <td><%= link_to 'Show', office %></td>
-        <td><%= link_to 'Edit', edit_office_path(office) %></td>
-        <td><%= link_to 'Destroy', office, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<h3>
+  <%= inline_svg('office_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Uffici</span>
+  <span class='pull-right'>
+    <h6>
+      <% if admin? %>
+        <%= link_to new_office_path do %>
+          <%= inline_svg('office_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+          Nuovo Ufficio
+        <% end %>
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
 <br>
-
-<%= link_to 'New Office', new_office_path %>
+<div class='panel panel-default'>
+  <div class='panel-body'>
+    <table class='table table-hover'>
+      <thead>
+        <tr>
+          <td>Nome</td>
+          <td>Posizione</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @offices.each do |office| %>
+          <tr>
+            <td class='text-primary'><%= office.name %></td>
+            <td class='text-primary'><%= office.position %></td>
+            <td>
+              <%= link_to edit_office_path(office), title: 'Modifica l\'Ufficio Corrente', rel: 'tooltip' do %>
+                <i class='fas fa-pencil-alt text-warning'></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to office, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare l\'Ufficio Corrente?' }, title: 'Elimina l\'Ufficio Corrente', rel: 'tooltip' do %>
+                <i class='fas fa-trash-alt text-danger'></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <span class='text-centered'>
+      <%= will_paginate @offices, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
+    </span>
+  </div>
+</div>

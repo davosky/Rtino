@@ -1,41 +1,41 @@
 <h3>
   <%= inline_svg('location_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
-  &nbsp;<strong class="text-primary">Locations</strong>
+  &nbsp;<span class='text-primary'>Posizioni</span>
   <span class='pull-right'>
     <h6>
       <% if admin? %>
         <%= link_to new_location_path do %>
           <%= inline_svg('location_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
-          New Location
+          Nuova Posizione
         <% end %>
       <% end %>
     </h6>
   </span>
 </h3>
-<hr class="hr-primary">
+<hr class='hr-primary'>
 <br>
-<div class="panel panel-default">
-  <div class="panel-body">
-      <table class="table table-hover">
+<div class='panel panel-default'>
+  <div class='panel-body'>
+      <table class='table table-hover'>
         <thead>
           <tr>
-            <td>Name</td>
-            <td>Position</td>
+            <td>Nome</td>
+            <td>Posizione</td>
           </tr>
         </thead>
         <tbody>
           <% @locations.each do |location| %>
             <tr>
-              <td class="text-primary"><%= location.name %></td>
-              <td class="text-primary"><%= location.position %></td>
+              <td class='text-primary'><%= location.name %></td>
+              <td class='text-primary'><%= location.position %></td>
               <td>
-                <%= link_to edit_location_path(location), title: 'Edit the current Location', rel: 'tooltip' do %>
-                  <i class="fas fa-pencil-alt text-warning"></i>
+                <%= link_to edit_location_path(location), title: 'Modifica la Posizione Corrente', rel: 'tooltip' do %>
+                  <i class='fas fa-pencil-alt text-warning'></i>
                 <% end %>
               </td>
               <td>
-                <%= link_to location, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete the current Location', rel: 'tooltip' do %>
-                  <i class="fas fa-trash-alt text-danger"></i>
+                <%= link_to location, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare la Posizione corrente?' }, title: 'Elimina la Posizione Corrente', rel: 'tooltip' do %>
+                  <i class='fas fa-trash-alt text-danger'></i>
                 <% end %>
               </td>
             </tr>
@@ -43,8 +43,8 @@
         </tbody>
       </table>
       <br>
-      <span class="text-centered">
-        <%= will_paginate @locations, renderer: BootstrapPagination::Rails %>
+      <span class='text-centered'>
+        <%= will_paginate @locations, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
       </span>
   </div>
 </div>

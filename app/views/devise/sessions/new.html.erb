@@ -7,22 +7,22 @@
 <br>
 <br>
 <br>
-<div class="panel panel-default text-centered">
+<div class="panel panel-primary text-centered">
   <div class="panel-body">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.label :email %><br />
+        <%= f.label :email, class: 'font-lite' %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
       </div>
       <br>
       <div class="field">
-        <%= f.label :password %><br />
+        <%= f.label :password, class: 'font-lite' %><br />
         <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
       </div>
       <br>
       <div class='form-group'>
-      <%= button_tag(type: 'submit', class: 'btn btn-default btn-block') do %>
-        <i class='fas fa-sign-in-alt'></i>&nbsp;&nbsp;LOG IN
+      <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block') do %>
+        <i class='fas fa-sign-in-alt'></i>&nbsp;&nbsp;ACCEDI
       <% end %>
     <% end %>
   </div>

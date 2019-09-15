@@ -1,15 +1,15 @@
 <h3>
   <%= inline_svg('report_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
-  &nbsp;<strong class="text-primary">Create a New Report</strong>
+  &nbsp;<span class='text-primary'>Crea un Nuovo Rapporto</span>
   <span class='pull-right'>
     <h6>
       <%= link_to reports_path do %>
-        <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
       <% end %>
     </h6>
   </span>
 </h3>
-<hr class="hr-primary">
+<hr class='hr-primary'>
 <br>
 <%= render 'form', report: @report %>
 <br>

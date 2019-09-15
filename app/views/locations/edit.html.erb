@@ -1,15 +1,15 @@
 <h3>
   <%= inline_svg('location_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
-  &nbsp;<strong class="text-primary">Editing the Current Location</strong>
+  &nbsp;<span class='text-primary'>Modificando la Posizione Corrente</span>
   <span class='pull-right'>
     <h6>
       <%= link_to locations_path do %>
-        <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
       <% end %>
     </h6>
   </span>
 </h3>
-<hr class="hr-primary">
+<hr class='hr-primary'>
 <br>
 <%= render 'form', location: @location %>
 <br>

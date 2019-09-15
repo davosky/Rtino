@@ -2,9 +2,9 @@ class Report < ApplicationRecord
   belongs_to :location, optional: true
   belongs_to :structure, optional: true
   has_many :assistances, dependent: :destroy
-  accepts_nested_attributes_for :assistances, allow_destroy: true
+  accepts_nested_attributes_for :assistances, reject_if: :all_blank, allow_destroy: true
 
-  # validates :date, presence: true
+  validates :date, presence: true
   validates :location_id, presence: true
   validates :structure_id, presence: true
 

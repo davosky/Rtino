@@ -1,5 +1,15 @@
-<h1>New Office</h1>
-
+<h3>
+  <%= inline_svg('office_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Crea un nuovo Ufficio</span>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to offices_path do %>
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
 <%= render 'form', office: @office %>
-
-<%= link_to 'Back', offices_path %>
+<br>
