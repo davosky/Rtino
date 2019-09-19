@@ -1,0 +1,65 @@
+<h3>
+  <%= inline_svg('transfer_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Trasferimenti</span>
+  <span class='pull-right'>
+    <h6>
+      <% if admin? %>
+        <%= link_to new_transfer_path do %>
+          <%= inline_svg('transfer_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+          Nuovo Trasferimento
+        <% end %>
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='container-fluid'>
+  <% @transfers.each_slice(3)  do |transfers| %>
+    <div class='row'>
+      <% transfers.each  do |transfer| %>
+        <div class='col-lg-4'>
+          <div class='panel panel-primary'>
+            <div class='panel-body'>
+              <h3>
+                <%= link_to transfer do %>
+                  <%= inline_svg('transfer_icon.svg', size: '26px * 26px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+                  <%= transfer.name %>
+                <% end %>
+                <span class='pull-right'>
+                  <small class='text-primary'>
+                    <i class='far fa-calendar-alt'></i>&nbsp;
+                    <%= l(transfer.transfer_date, format: '%A %d %B %Y') %>
+                  </small>
+                </span>
+              </h3>
+              <hr class='hr-gray-lighter-less'>
+              <span class='pull-left'>
+                <i class="far fa-clock text-primary"></i>&nbsp;
+                <%= l(transfer.departure, format: '%H:%M') %>&nbsp;
+                <i class="fas fa-arrow-up text-primary"></i>
+                <br>
+                <i class="fas fa-map-marker-alt text-primary"></i>&nbsp;
+                <%= transfer.start_point %>&nbsp;
+                <i class="fas fa-arrow-up text-primary"></i>
+              </span>
+              <span class='pull-right'>
+                <i class="far fa-clock text-primary"></i>&nbsp;
+                <%= l(transfer.arrival, format: '%H:%M') %>&nbsp;
+                <i class="fas fa-arrow-down text-primary"></i>
+                <br>
+                <i class="fas fa-map-marker-alt text-primary"></i>&nbsp;
+                <%= transfer.destination %>&nbsp;
+                <i class="fas fa-arrow-down text-primary"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
+  <span class='text-centered'>
+    <%= will_paginate @transfers, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
+  </span>
+</div>

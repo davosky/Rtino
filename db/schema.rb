@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_074618) do
+ActiveRecord::Schema.define(version: 2019_09_16_180634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,31 @@ ActiveRecord::Schema.define(version: 2019_09_10_074618) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transfers", force: :cascade do |t|
+    t.integer "name"
+    t.date "transfer_date"
+    t.time "departure"
+    t.string "start_point"
+    t.string "start_address"
+    t.time "arrival"
+    t.string "destination"
+    t.string "destination_address"
+    t.decimal "path_lenght"
+    t.bigint "transport_id"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "travel_time"
+    t.index ["transport_id"], name: "index_transfers_on_transport_id"
+  end
+
+  create_table "transports", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "user_type", default: "regular", null: false
     t.string "name", default: "", null: false
@@ -95,4 +120,5 @@ ActiveRecord::Schema.define(version: 2019_09_10_074618) do
   add_foreign_key "reports", "assistances"
   add_foreign_key "reports", "locations"
   add_foreign_key "reports", "structures"
+  add_foreign_key "transfers", "transports"
 end

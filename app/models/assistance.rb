@@ -5,5 +5,4 @@ class Assistance < ApplicationRecord
 
   validates :start_time, presence: true
   validates :end_time, presence: true
-  validates :description, presence: true
 end

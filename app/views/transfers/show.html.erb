@@ -1,0 +1,56 @@
+<h3>
+  <%= inline_svg('transfer_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Trasferimento n°:&nbsp;<%= @transfer.name %></span>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to transfers_path, title: 'Back to the List', rel: 'tooltip' do %>
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to edit_transfer_path(@transfer), title: 'Edit the current Location', rel: 'tooltip' do %>
+        <span class='text-warning'><i class='fas fa-pencil-alt'></i></span>&nbsp;&nbsp;Modifica
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to @transfer, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare il Rapporto corrente?' }, title: 'Delete the current Location', rel: 'tooltip' do %>
+        <span class='text-danger'><i class='fas fa-trash-alt'></i></span>&nbsp;&nbsp;Elimina
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div>
+  <span class='text-primary'><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;Data Trasferimento: </span><span class="text-info"><%= l(@transfer.transfer_date, format: '%A %d %B %Y') %></span>
+  <span class='pull-right'>
+    <span class='text-primary'><i class="far fa-clock"></i>&nbsp;&nbsp;Ora partenza: </span><span class="text-info"><%= l(@transfer.departure, format: '%H:%M') %></span>
+    &nbsp;
+    <span class='text-primary'><i class="far fa-clock"></i>&nbsp;&nbsp;Ora Arrivo: </span><span class="text-info"><%= l(@transfer.arrival, format: '%H:%M') %></span>
+  </span>
+  <br>
+  <hr class='hr-gray-lighter-less'>
+  <span class='text-primary'><i class="fas fa-map-marker-alt"></i><i class='fas fa-arrow-up'></i>&nbsp;&nbsp;Punto Partenza: </span><span class="text-info"><%= @transfer.start_point %></span>
+  &nbsp;&nbsp;<small class='text-grey'>(<%= @transfer.start_address %>)</small>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span class='text-primary'><i class="fas fa-map-marker-alt"></i><i class='fas fa-arrow-down'></i>&nbsp;&nbsp;Destinazione: </span><span class="text-info"><%= @transfer.destination %></span>
+  &nbsp;&nbsp;&nbsp;<small class='text-grey'>(<%= @transfer.destination_address %>)</small>
+  <span class='pull-right'>
+    <span class='text-primary'><i class="fas fa-road"></i>&nbsp;&nbsp;lunghezza Percorso: </span><span class="text-info"><%= @transfer.path_lenght %>&nbsp;Km</span>
+  </span>
+  <br>
+  <span class="pull-left">
+    <span class="text-primary"><i class="fas fa-car-side"></i>&nbsp;&nbsp;Mezzo di trasporto:</span>
+    &nbsp;<span class="text-info"><%= @transfer.transport.name if transport?(@transfer) %></span>
+  </span>
+  <br>
+  <hr class='hr-gray-lighter-less'>
+  <h4 class='text-primary'>
+    <small class="text-primary">
+      <i class='fas fa-arrow-up'></i><i class="far fa-clock"></i><i class='fas fa-arrow-down'></i>
+    </small>
+    &nbsp;Totale tempo trasferimento:&nbsp;&nbsp;
+    minuti:&nbsp;<span class='text-info'><%= @totalminute %></span>&nbsp;<small class='text-grey'>(ore:&nbsp;<%= @totalhour %>)</small>
+  </h4>
+  <hr class='hr-gray-lighter-less'>
+  <span class='text-primary'>Note: </span>
+  <span><%= @transfer.note %></span>
+</div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :transfers
+  resources :transports
   resources :assistances
   resources :offices
   resources :categories

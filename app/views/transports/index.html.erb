@@ -1,0 +1,50 @@
+<h3>
+  <%= inline_svg('transport_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Mezzi di Trasporto</span>
+  <span class='pull-right'>
+    <h6>
+      <% if admin? %>
+        <%= link_to new_transport_path do %>
+        <%= inline_svg('transport_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+        Nuovo Mezzo di Trasporto
+      <% end %>
+    <% end %>
+  </h6>
+</span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='panel panel-default'>
+<div class='panel-body'>
+  <table class='table table-hover'>
+    <thead>
+      <tr>
+        <td>Nome</td>
+        <td>Posizione</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transports.each do |transport| %>
+        <tr>
+          <td class='text-primary'><%= transport.name %></td>
+          <td class='text-primary'><%= transport.position %></td>
+          <td>
+            <%= link_to edit_transport_path(transport), title: 'Modifica il Mezzo di Trasporto Corrente', rel: 'tooltip' do %>
+            <i class='fas fa-pencil-alt text-warning'></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to transport, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare il Mezzo di Trasporto Corrente?' }, title: 'Elimina il Mezzo di Trasporto Corrente', rel: 'tooltip' do %>
+          <i class='fas fa-trash-alt text-danger'></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<br>
+<span class='text-centered'>
+<%= will_paginate @transports, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
+</span>
+</div>
+</div>

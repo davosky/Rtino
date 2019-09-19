@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RailsAdmin.config do |config|
   config.authorize_with do
     redirect_to main_app.root_path unless current_user.user_type == "admin"
@@ -47,6 +49,18 @@ RailsAdmin.config do |config|
     visible true
     label "Categoria"
     label_plural "Categorie"
+  end
+
+  config.model "Transport" do
+    visible true
+    label "Trasporto"
+    label_plural "Trasporti"
+  end
+
+  config.model "Transfer" do
+    visible true
+    label "Trasferimento"
+    label_plural "Trasferimenti"
   end
 
   config.actions do

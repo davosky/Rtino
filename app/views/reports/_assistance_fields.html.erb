@@ -3,40 +3,53 @@
 <div class='panel panel-info'>
   <div class='panel-body'>
     <div class='nested-fields'>
-    <div class='field'>
-    <%= f.label :start_time, class: 'text-info font-lite' %>
-    <%= f.text_field :start_time, class: 'form-control' %>
-  </div>
-  <div class='field'>
-    <%= f.label :end_time, class: 'text-info font-lite' %>
-    <%= f.text_field :end_time, class: 'form-control' %>
-  </div>
-  <div class='field'>
-    <%= f.label :description, class: 'text-info font-lite' %>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
-  <div class='field'>
-    <%= f.label :note, class: 'text-info font-lite' %>
-    <%= f.text_area :note, class: 'form-control' %>
-  </div>
-  <div class='field'>
-    <%= f.label :category_id, class: 'text-info font-lite' %>
-    <%= f.collection_select(:category_id, Category.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
-  </div>
-  <div class='field'>
-    <%= f.label :office_id, class: 'text-info font-lite' %>
-    <%= f.collection_select(:office_id, Office.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
-  </div>
-  <br>
-  <span class='pull-right'>
-    <%= link_to_remove_association f do %>
-    <span class='text-danger'>
-      <i class='fas fa-trash-alt'></i>&nbsp;&nbsp;Elimina Assistenza
+      <span class="text-info">Ora Inizio</span><br>
+      <div class='input-group date' id='datetimepicker1'>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+        <%= f.text_field :start_time, class: 'form-control'%>
+      </div>
+      <span class="text-info">Ora Fine</span><br>
+      <div class='input-group date' id='datetimepicker2'>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+        <%= f.text_field :end_time, class: 'form-control'%>
+      </div>
+      <div class='field'>
+        <%= f.label :description, class: 'text-info font-lite' %>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+      <div class='field'>
+        <%= f.label :note, class: 'text-info font-lite' %>
+        <%= f.text_area :note, class: 'form-control' %>
+      </div>
+      <div class='field'>
+        <%= f.label :category_id, class: 'text-info font-lite' %>
+        <%= f.collection_select(:category_id, Category.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+      </div>
+      <div class='field'>
+        <%= f.label :office_id, class: 'text-info font-lite' %>
+        <%= f.collection_select(:office_id, Office.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+      </div>
+      <br>
+      <span class='pull-right'>
+        <%= link_to_remove_association f do %>
+        <span class='text-danger'>
+          <i class='fas fa-trash-alt'></i>&nbsp;&nbsp;Elimina Assistenza
+        </span>
+      <% end %>
     </span>
-  <% end %>
-  </span>
-  <br>
-  </div>
+    <br>
   </div>
 </div>
-
+</div>
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker({format: 'H:mm'});
+  });
+  $(function () {
+    $('#datetimepicker2').datetimepicker({format: 'H:mm'});
+  });
+</script>

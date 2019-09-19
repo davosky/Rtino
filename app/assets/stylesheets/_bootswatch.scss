@@ -45,7 +45,7 @@ a:hover {
   border: 0;
   border-top: 1px solid $brand-primary;
   margin: 1em 0;
-  padding: 0; 
+  padding: 0;
 }
 
 .hr-info {
@@ -54,7 +54,7 @@ a:hover {
   border: 0;
   border-top: 1px solid $brand-info;
   margin: 1em 0;
-  padding: 0; 
+  padding: 0;
 }
 
 .hr-gray-lighter-less {
@@ -63,11 +63,15 @@ a:hover {
   border: 0;
   border-top: 1px solid #cdcdcd;
   margin: 1em 0;
-  padding: 0; 
+  padding: 0;
 }
 
 .label-lite {
   font-weight: 300;
+}
+
+.vertalign {
+  vertical-align: middle;
 }
 
 // Navbar =====================================================================

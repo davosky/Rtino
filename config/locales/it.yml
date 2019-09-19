@@ -61,67 +61,89 @@ it:
         reports: Rapporti
         created_at: Ctreato il
         updated_at: Aggiornato il
+      transport:
+        name: Nome
+        position: Posizione
+        transfers: Trasferimenti
+        created_at: Ctreato il
+        updated_at: Aggiornato il
+      transfer:
+        name: Codice
+        transfer_date: Data
+        departure: Ora Partenza
+        start_point: Luogo Partenza
+        start_address: Indirizzo Partenza
+        arrival: Ora Arrivo
+        destination: Luogo Arrivo
+        destination_address: Indirizzo Arrivo
+        path_lenght: Lunghezza Percorso
+        transport: Trasporto
+        transport_id: Trasporto
+        created_at: Ctreato il
+        updated_at: Aggiornato il
     errors:
       messages:
-        record_invalid: 'Validazione fallita: %{errors}'
+        record_invalid: "Validazione fallita: %{errors}"
         restrict_dependent_destroy:
-          has_one: Il record non può essere cancellato perchè esiste un %{record}
+          has_one:
+            Il record non può essere cancellato perchè esiste un %{record}
             dipendente
-          has_many: Il record non può essere cancellato perchè esistono %{record}
+          has_many:
+            Il record non può essere cancellato perchè esistono %{record}
             dipendenti
   date:
     abbr_day_names:
-    - dom
-    - lun
-    - mar
-    - mer
-    - gio
-    - ven
-    - sab
+      - dom
+      - lun
+      - mar
+      - mer
+      - gio
+      - ven
+      - sab
     abbr_month_names:
-    -
-    - gen
-    - feb
-    - mar
-    - apr
-    - mag
-    - giu
-    - lug
-    - ago
-    - set
-    - ott
-    - nov
-    - dic
+      -
+      - gen
+      - feb
+      - mar
+      - apr
+      - mag
+      - giu
+      - lug
+      - ago
+      - set
+      - ott
+      - nov
+      - dic
     day_names:
-    - domenica
-    - lunedì
-    - martedì
-    - mercoledì
-    - giovedì
-    - venerdì
-    - sabato
+      - domenica
+      - lunedì
+      - martedì
+      - mercoledì
+      - giovedì
+      - venerdì
+      - sabato
     formats:
       default: "%d/%m/%Y"
       long: "%d %B %Y"
       short: "%d %b"
     month_names:
-    -
-    - gennaio
-    - febbraio
-    - marzo
-    - aprile
-    - maggio
-    - giugno
-    - luglio
-    - agosto
-    - settembre
-    - ottobre
-    - novembre
-    - dicembre
+      -
+      - gennaio
+      - febbraio
+      - marzo
+      - aprile
+      - maggio
+      - giugno
+      - luglio
+      - agosto
+      - settembre
+      - ottobre
+      - novembre
+      - dicembre
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -201,10 +223,10 @@ it:
         one: è della lunghezza sbagliata (deve essere di 1 carattere)
         other: è della lunghezza sbagliata (deve essere di %{count} caratteri)
     template:
-      body: 'Ricontrolla i seguenti campi:'
+      body: "Ricontrolla i seguenti campi:"
       header:
-        one: 'Non posso salvare questo %{model}: 1 errore'
-        other: 'Non posso salvare questo %{model}: %{count} errori.'
+        one: "Non posso salvare questo %{model}: 1 errore"
+        other: "Non posso salvare questo %{model}: %{count} errori."
   helpers:
     select:
       prompt: Seleziona...
@@ -237,9 +259,9 @@ it:
           quadrillion: Biliardi
           thousand: Mila
           trillion: Bilioni
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -255,11 +277,11 @@ it:
           tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   support:
     array:
       last_word_connector: " e "

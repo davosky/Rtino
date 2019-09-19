@@ -1,0 +1,76 @@
+<%= form_with(model: transfer, local: true) do |f| %>
+<% if transfer.errors.any? %>
+  <div id='error_explanation'>
+    <h2><%= pluralize(transfer.errors.count, 'error') %>
+      prohibited this transfer from being saved:</h2>
+    <ul>
+      <% transfer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class='field'>
+  <%= f.label :transfer_date, class: 'text-primary font-lite' %>
+  <%= f.text_field :transfer_date, class: 'datepicker form-control' %>
+</div>
+<span class="text-primary">Ora Partenza</span><br>
+<div class='input-group date' id='datetimepicker4'>
+  <span class="input-group-addon">
+    <span class="glyphicon glyphicon-time"></span>
+  </span>
+  <%= f.text_field :departure, class: 'form-control'%>
+</div>
+<div class='field'>
+  <%= f.label :start_point, class: 'text-primary font-lite' %>
+  <%= f.text_field :start_point, class: 'form-control' %>
+</div>
+<div class='field'>
+  <%= f.label :start_address, class: 'text-primary font-lite' %>
+  <%= f.text_field :start_address, class: 'form-control' %>
+</div>
+<span class="text-primary">Ora Arrivo</span><br>
+<div class='input-group date' id='datetimepicker5'>
+  <span class="input-group-addon">
+    <span class="glyphicon glyphicon-time"></span>
+  </span>
+  <%= f.text_field :arrival, class: 'form-control' %>
+</div>
+<div class='field'>
+  <%= f.label :destination, class: 'text-primary font-lite' %>
+  <%= f.text_field :destination, class: 'form-control' %>
+</div>
+<div class='field'>
+  <%= f.label :destination_address, class: 'text-primary font-lite' %>
+  <%= f.text_field :destination_address, class: 'form-control' %>
+</div>
+<div class='field'>
+  <%= f.label :path_lenght, class: 'text-primary font-lite' %>
+  <%= f.text_field :path_lenght, class: 'form-control' %>
+</div>
+<div class='field'>
+  <%= f.label :transport_id, class: 'text-primary font-lite' %>
+  <%= f.collection_select(:transport_id, Transport.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+</div>
+<br>
+<div class='form-group'>
+  <%= button_tag(type: 'submit', class: 'btn btn-success btn-sm font-lite') do %>
+  <i class='fas fa-save'></i>&nbsp;&nbsp;SALVA
+<% end %>
+</div>
+<% end %>
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker4').datetimepicker({format: 'H:mm'});
+  });
+  $(function () {
+    $('#datetimepicker5').datetimepicker({format: 'H:mm'});
+  });
+  $(document).ready(function () {
+    $('.datepicker').datepicker({
+      language: 'it',
+      todayBtn: 'linked',
+      orientation: 'bottom auto'
+    });
+  });
+</script>

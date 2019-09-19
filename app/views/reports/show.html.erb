@@ -22,11 +22,11 @@
 <div class='panel panel-primary'>
   <div class='panel-body'>
     <div>
-      <span class='text-primary'>Data: </span><span class="label label-primary font-lite"><%= l(@report.date, format: '%A %d %B %Y') %></span>
+      <span class='text-primary'>Data: </span><%= l(@report.date, format: '%A %d %B %Y') %>
       &nbsp;
-      <span class='text-primary'>Posizione: </span><span class="label label-primary font-lite"><%= location?(@report) %></span>
+      <span class='text-primary'>Posizione: </span><%= location?(@report) %>
       &nbsp;
-      <span class='text-primary'>Struttura: </span><span class="label label-primary font-lite"><%= structure?(@report) %></span>
+      <span class='text-primary'>Struttura: </span><%= structure?(@report) %>
     </div>
   </div>
 </div>
@@ -39,22 +39,22 @@
 <% @report.assistances.each  do |assistance| %>
   <div class='panel panel-info'>
     <div class='panel-body'>
-      <span class='text-info'>Ora Inizio:</span>&nbsp;<span class="label label-info font-lite"><%= l(assistance.start_time, format: '%H : %M') %></span>
-      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <span class='text-info'>Ora Fine:</span>&nbsp;<span class="label label-info font-lite"><%= l(assistance.end_time, format: '%H : %M') %></span>
-      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <span class='text-info'>Ufficio:</span>&nbsp;<span class="label label-info font-lite"><%= office?(assistance) %></span>
-      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <span class='text-info'>Categoria:</span>&nbsp;<span class="label label-info font-lite"><%= category?(assistance) %></span>
+      <span class='text-info'>Ora Inizio:</span>&nbsp;<%= l(assistance.start_time, format: '%H : %M') %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>Ora Fine:</span>&nbsp;<%= l(assistance.end_time, format: '%H : %M') %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>Ufficio:</span>&nbsp;<%= office?(assistance) %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>Categoria:</span>&nbsp;<%= category?(assistance) %>
       <br>
       <br>
       <span class='text-info'>Descrizione:</span>&nbsp;
-      <hr class='hr-info'>
+      <hr class='hr-gray-lighter-less'>
       <%= assistance.description %>
       <br>
       <br>
       <span class='text-info'>Note:</span>&nbsp;
-      <hr class='hr-info'>
+      <hr class='hr-gray-lighter-less'>
       <%= assistance.note %>
     </div>
   </div>
