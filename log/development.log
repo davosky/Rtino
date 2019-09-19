@@ -43220,3 +43220,35 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 273ms (Views: 270.7ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/" for ::1 at 2019-09-19 20:01:22 +0200
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (171.8ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 631ms (Views: 603.1ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/home/howto" for ::1 at 2019-09-19 20:01:27 +0200
+Processing by HomeController#howto as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering home/howto.html.erb within layouts/application
+  Rendered home/howto.html.erb within layouts/application (0.3ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 207ms (Views: 204.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/home/credits" for ::1 at 2019-09-19 20:01:30 +0200
+Processing by HomeController#credits as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering home/credits.html.erb within layouts/application
+  Rendered home/credits.html.erb within layouts/application (0.3ms)
+  Rendered shared/_navbar.html.erb (3.8ms)
+Completed 200 OK in 210ms (Views: 205.3ms | ActiveRecord: 0.4ms)
+
+
