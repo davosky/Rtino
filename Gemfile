@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.5.3'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
@@ -15,7 +15,7 @@ gem 'inline_svg', '~> 1.5', '>= 1.5.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'momentjs-rails', '~> 2.20', '>= 2.20.1'
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'popper_js', '~> 1.14', '>= 1.14.5'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'

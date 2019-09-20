@@ -1,5 +1,5 @@
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
   username: Rtino
   password: Dfr368qE
