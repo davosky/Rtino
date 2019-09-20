@@ -22,11 +22,11 @@
 <div class='panel panel-primary'>
   <div class='panel-body'>
     <div>
-      <span class='text-primary'>Data: </span><%= l(@report.date, format: '%A %d %B %Y') %>
+      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data: </span><%= l(@report.date, format: '%A %d %B %Y') %>
       &nbsp;
-      <span class='text-primary'>Posizione: </span><%= location?(@report) %>
+      <span class='text-primary'><i class='fas fa-map-marker-alt'></i>&nbsp;&nbsp;Posizione: </span><%= location?(@report) %>
       &nbsp;
-      <span class='text-primary'>Struttura: </span><%= structure?(@report) %>
+      <span class='text-primary'><i class='far fa-building'></i>&nbsp;&nbsp;Struttura: </span><%= structure?(@report) %>
     </div>
   </div>
 </div>
@@ -39,13 +39,13 @@
 <% @report.assistances.each  do |assistance| %>
   <div class='panel panel-info'>
     <div class='panel-body'>
-      <span class='text-info'>Ora Inizio:</span>&nbsp;<%= l(assistance.start_time, format: '%H : %M') %>
+      <span class='text-info'><i class='far fa-clock'></i>&nbsp;&nbsp;Ora Inizio:</span>&nbsp;<%= l(assistance.start_time, format: '%H : %M') %>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <span class='text-info'>Ora Fine:</span>&nbsp;<%= l(assistance.end_time, format: '%H : %M') %>
+      <span class='text-info'><i class='far fa-clock'></i>&nbsp;&nbsp;Ora Fine:</span>&nbsp;<%= l(assistance.end_time, format: '%H : %M') %>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <span class='text-info'>Ufficio:</span>&nbsp;<%= office?(assistance) %>
+      <span class='text-info'><i class='fas fa-chair'></i>&nbsp;&nbsp;Ufficio:</span>&nbsp;<%= office?(assistance) %>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <span class='text-info'>Categoria:</span>&nbsp;<%= category?(assistance) %>
+      <span class='text-info'><i class='fas fa-list'></i>&nbsp;&nbsp;Categoria:</span>&nbsp;<%= category?(assistance) %>
       <br>
       <br>
       <span class='text-info'>Descrizione:</span>&nbsp;
