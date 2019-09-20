@@ -46767,3 +46767,418 @@ Processing by ReportsController#show as HTML
 Completed 200 OK in 197ms (Views: 192.4ms | ActiveRecord: 2.8ms)
 
 
+Started GET "/" for ::1 at 2019-09-20 11:32:42 +0200
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 9ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-20 11:32:42 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (110.9ms)
+Completed 200 OK in 628ms (Views: 609.4ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-09-20 11:32:52 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FZo0JY7OjoWM91c+PhcKW30166FPz7NWAm2b0/zSEhl5We6LuLe5q0y5jP6cEB+CcKzp+1Em+EvJEqP47yz5fw==", "user"=>{"email"=>"assistenza@fvg.cgil.it", "password"=>"[FILTERED]"}, "button"=>""}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "assistenza@fvg.cgil.it"], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 132ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2019-09-20 11:32:52 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (4.1ms)
+  Rendered shared/_navbar.html.erb (4.3ms)
+Completed 200 OK in 206ms (Views: 203.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reports" for ::1 at 2019-09-20 11:32:54 +0200
+Processing by ReportsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering reports/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(DISTINCT "reports"."id") FROM "reports" WHERE "reports"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/reports/index.html.erb:18
+  [1m[36mReport Load (0.7ms)[0m  [1m[34mSELECT  DISTINCT "reports".* FROM "reports" WHERE "reports"."user_id" = $1 ORDER BY "reports"."date" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 6], ["OFFSET", 0]]
+  ↳ app/views/reports/index.html.erb:18
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/reports/index.html.erb:41
+  [1m[36mStructure Load (0.5ms)[0m  [1m[34mSELECT  "structures".* FROM "structures" WHERE "structures"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/reports/index.html.erb:45
+  Rendered reports/index.html.erb within layouts/application (50.8ms)
+  Rendered shared/_navbar.html.erb (11.4ms)
+Completed 200 OK in 278ms (Views: 251.1ms | ActiveRecord: 20.3ms)
+
+
+Started GET "/reports/10" for ::1 at 2019-09-20 11:32:58 +0200
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mReport Load (0.4ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:62
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:3
+  [1m[36mStructure Load (0.4ms)[0m  [1m[34mSELECT  "structures".* FROM "structures" WHERE "structures"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:7
+  [1m[36mAssistance Load (0.7ms)[0m  [1m[34mSELECT "assistances".* FROM "assistances" WHERE "assistances"."report_id" = $1[0m  [["report_id", 10]]
+  ↳ app/views/reports/show.html.erb:39
+  [1m[36mOffice Load (0.5ms)[0m  [1m[34mSELECT  "offices".* FROM "offices" WHERE "offices"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:15
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:11
+  Rendered reports/show.html.erb within layouts/application (76.0ms)
+  Rendered shared/_navbar.html.erb (4.1ms)
+Completed 200 OK in 283ms (Views: 253.9ms | ActiveRecord: 26.5ms)
+
+
+Started GET "/reports/10/edit" for ::1 at 2019-09-20 11:33:02 +0200
+Processing by ReportsController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mReport Load (0.6ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:62
+  Rendering reports/edit.html.erb within layouts/application
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_form.html.erb:18
+  [1m[36mStructure Load (0.5ms)[0m  [1m[34mSELECT "structures".* FROM "structures" WHERE "structures"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_form.html.erb:22
+  [1m[36mAssistance Load (0.4ms)[0m  [1m[34mSELECT "assistances".* FROM "assistances" WHERE "assistances"."report_id" = $1[0m  [["report_id", 10]]
+  ↳ app/views/reports/_form.html.erb:27
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_assistance_fields.html.erb:30
+  [1m[36mOffice Load (0.4ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_assistance_fields.html.erb:34
+  Rendered reports/_assistance_fields.html.erb (5.4ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_assistance_fields.html.erb:30
+  [1m[36mCACHE Office Load (0.0ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_assistance_fields.html.erb:34
+  Rendered reports/_assistance_fields.html.erb (4.1ms)
+  Rendered reports/_form.html.erb (23.8ms)
+  Rendered reports/edit.html.erb within layouts/application (27.7ms)
+  Rendered shared/_navbar.html.erb (5.1ms)
+Completed 200 OK in 237ms (Views: 230.9ms | ActiveRecord: 3.3ms)
+
+
+Started PATCH "/reports/10" for ::1 at 2019-09-20 11:33:10 +0200
+Processing by ReportsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2imCgdTzZbpVX/44VbOJ40AcNBY36BBojfIozVeFlLZwzhD7QHJTIHnqiWMre0PyUzWlgw4JNzXuYutw3bpELw==", "report"=>{"date"=>"2019-09-20", "location_id"=>"6", "structure_id"=>"7", "assistances_attributes"=>{"0"=>{"start_time"=>"20:00", "end_time"=>"20:00", "description"=>"Programmazione.", "note"=>"Notea di test.", "category_id"=>"5", "office_id"=>"4", "_destroy"=>"false", "id"=>"14"}}}, "button"=>"", "id"=>"10"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mReport Load (0.5ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:62
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reports_controller.rb:41
+  [1m[36mAssistance Load (0.4ms)[0m  [1m[34mSELECT "assistances".* FROM "assistances" WHERE "assistances"."report_id" = $1 AND "assistances"."id" = $2[0m  [["report_id", 10], ["id", 14]]
+  ↳ app/controllers/reports_controller.rb:41
+  [1m[36mAssistance Update (0.6ms)[0m  [1m[33mUPDATE "assistances" SET "start_time" = $1, "end_time" = $2, "updated_at" = $3 WHERE "assistances"."id" = $4[0m  [["start_time", "20:00:00"], ["end_time", "20:00:00"], ["updated_at", "2019-09-20 11:33:10.548465"], ["id", 14]]
+  ↳ app/controllers/reports_controller.rb:41
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reports_controller.rb:41
+Redirected to http://localhost:3000/reports/10
+Completed 302 Found in 30ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/reports/10" for ::1 at 2019-09-20 11:33:10 +0200
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mReport Load (0.4ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:62
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:3
+  [1m[36mStructure Load (0.3ms)[0m  [1m[34mSELECT  "structures".* FROM "structures" WHERE "structures"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:7
+  [1m[36mAssistance Load (0.4ms)[0m  [1m[34mSELECT "assistances".* FROM "assistances" WHERE "assistances"."report_id" = $1[0m  [["report_id", 10]]
+  ↳ app/views/reports/show.html.erb:39
+  [1m[36mOffice Load (0.3ms)[0m  [1m[34mSELECT  "offices".* FROM "offices" WHERE "offices"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:15
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:11
+  Rendered reports/show.html.erb within layouts/application (9.7ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 217ms (Views: 211.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/reports" for ::1 at 2019-09-20 11:33:15 +0200
+Processing by ReportsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering reports/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "reports"."id") FROM "reports" WHERE "reports"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/reports/index.html.erb:18
+  [1m[36mReport Load (0.7ms)[0m  [1m[34mSELECT  DISTINCT "reports".* FROM "reports" WHERE "reports"."user_id" = $1 ORDER BY "reports"."date" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 6], ["OFFSET", 0]]
+  ↳ app/views/reports/index.html.erb:18
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/reports/index.html.erb:41
+  [1m[36mStructure Load (0.3ms)[0m  [1m[34mSELECT  "structures".* FROM "structures" WHERE "structures"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/reports/index.html.erb:45
+  Rendered reports/index.html.erb within layouts/application (13.4ms)
+  Rendered shared/_navbar.html.erb (3.9ms)
+Completed 200 OK in 208ms (Views: 204.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/reports/new" for ::1 at 2019-09-20 11:33:16 +0200
+Processing by ReportsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering reports/new.html.erb within layouts/application
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_form.html.erb:18
+  [1m[36mStructure Load (0.4ms)[0m  [1m[34mSELECT "structures".* FROM "structures" WHERE "structures"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_form.html.erb:22
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_assistance_fields.html.erb:30
+  [1m[36mOffice Load (0.4ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/reports/_assistance_fields.html.erb:34
+  Rendered reports/_assistance_fields.html.erb (4.1ms)
+  Rendered reports/_form.html.erb (10.5ms)
+  Rendered reports/new.html.erb within layouts/application (13.9ms)
+  Rendered shared/_navbar.html.erb (4.2ms)
+Completed 200 OK in 225ms (Views: 220.5ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/reports" for ::1 at 2019-09-20 11:34:14 +0200
+Processing by ReportsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XiXX9JCppOoQz7rgPda+lZwOWzFhVN//SCLMaTD4uFmRZ559d+WZ01QGVkctjmI7g5ScaDYYE22f+BtaPPZxCQ==", "report"=>{"date"=>"20/09/2019", "location_id"=>"6", "structure_id"=>"7", "assistances_attributes"=>{"1568972003873"=>{"start_time"=>"13:00", "end_time"=>"14:00", "description"=>"Deploy", "note"=>"Deploy dell'ultima app.", "category_id"=>"5", "office_id"=>"4", "_destroy"=>"false"}, "1568972003877"=>{"start_time"=>"", "end_time"=>"", "description"=>"", "note"=>"", "category_id"=>"", "office_id"=>"", "_destroy"=>"false"}}}, "button"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reports_controller.rb:29
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT MAX("reports"."name") FROM "reports"[0m
+  ↳ app/models/report.rb:15
+  [1m[36mReport Create (1.5ms)[0m  [1m[32mINSERT INTO "reports" ("name", "date", "location_id", "structure_id", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", 11], ["date", "2019-09-20"], ["location_id", 6], ["structure_id", 7], ["created_at", "2019-09-20 11:34:14.075683"], ["updated_at", "2019-09-20 11:34:14.075683"], ["user_id", 1]]
+  ↳ app/controllers/reports_controller.rb:29
+  [1m[36mAssistance Create (1.0ms)[0m  [1m[32mINSERT INTO "assistances" ("report_id", "start_time", "end_time", "description", "note", "category_id", "office_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["report_id", 11], ["start_time", "13:00:00"], ["end_time", "14:00:00"], ["description", "Deploy"], ["note", "Deploy dell'ultima app."], ["category_id", 5], ["office_id", 4], ["created_at", "2019-09-20 11:34:14.080299"], ["updated_at", "2019-09-20 11:34:14.080299"]]
+  ↳ app/controllers/reports_controller.rb:29
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reports_controller.rb:29
+Redirected to http://localhost:3000/reports/11
+Completed 302 Found in 18ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/reports/11" for ::1 at 2019-09-20 11:34:14 +0200
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mReport Load (0.4ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:62
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:3
+  [1m[36mStructure Load (0.3ms)[0m  [1m[34mSELECT  "structures".* FROM "structures" WHERE "structures"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:7
+  [1m[36mAssistance Load (0.4ms)[0m  [1m[34mSELECT "assistances".* FROM "assistances" WHERE "assistances"."report_id" = $1[0m  [["report_id", 11]]
+  ↳ app/views/reports/show.html.erb:39
+  [1m[36mOffice Load (0.3ms)[0m  [1m[34mSELECT  "offices".* FROM "offices" WHERE "offices"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:15
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/helpers/reports_helper.rb:11
+  Rendered reports/show.html.erb within layouts/application (9.8ms)
+  Rendered shared/_navbar.html.erb (4.3ms)
+Completed 200 OK in 230ms (Views: 225.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/reports" for ::1 at 2019-09-20 11:34:18 +0200
+Processing by ReportsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering reports/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "reports"."id") FROM "reports" WHERE "reports"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/reports/index.html.erb:18
+  [1m[36mReport Load (0.5ms)[0m  [1m[34mSELECT  DISTINCT "reports".* FROM "reports" WHERE "reports"."user_id" = $1 ORDER BY "reports"."date" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 6], ["OFFSET", 0]]
+  ↳ app/views/reports/index.html.erb:18
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/reports/index.html.erb:41
+  [1m[36mStructure Load (0.9ms)[0m  [1m[34mSELECT  "structures".* FROM "structures" WHERE "structures"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/reports/index.html.erb:45
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/reports/index.html.erb:41
+  [1m[36mCACHE Structure Load (0.0ms)[0m  [1m[34mSELECT  "structures".* FROM "structures" WHERE "structures"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/reports/index.html.erb:45
+  Rendered reports/index.html.erb within layouts/application (17.6ms)
+  Rendered shared/_navbar.html.erb (4.1ms)
+Completed 200 OK in 220ms (Views: 215.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/transfers" for ::1 at 2019-09-20 11:34:22 +0200
+Processing by TransfersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering transfers/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "transfers"."id") FROM "transfers" WHERE "transfers"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/transfers/index.html.erb:18
+  [1m[36mTransfer Load (0.8ms)[0m  [1m[34mSELECT  DISTINCT "transfers".* FROM "transfers" WHERE "transfers"."user_id" = $1 ORDER BY "transfers"."transfer_date" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 6], ["OFFSET", 0]]
+  ↳ app/views/transfers/index.html.erb:18
+  Rendered transfers/index.html.erb within layouts/application (28.1ms)
+  Rendered shared/_navbar.html.erb (11.2ms)
+Completed 200 OK in 265ms (Views: 254.3ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/transfers/6" for ::1 at 2019-09-20 11:34:23 +0200
+Processing by TransfersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mTransfer Load (0.4ms)[0m  [1m[34mSELECT  "transfers".* FROM "transfers" WHERE "transfers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/transfers_controller.rb:65
+  [1m[36mCACHE Transfer Load (0.0ms)[0m  [1m[34mSELECT  "transfers".* FROM "transfers" WHERE "transfers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/transfers_controller.rb:16
+  Rendering transfers/show.html.erb within layouts/application
+  [1m[36mTransport Load (0.5ms)[0m  [1m[34mSELECT  "transports".* FROM "transports" WHERE "transports"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/helpers/transfers_helper.rb:6
+  Rendered transfers/show.html.erb within layouts/application (17.3ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 236ms (Views: 226.7ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/transfers/6/edit" for ::1 at 2019-09-20 11:34:30 +0200
+Processing by TransfersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mTransfer Load (0.4ms)[0m  [1m[34mSELECT  "transfers".* FROM "transfers" WHERE "transfers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/transfers_controller.rb:65
+  Rendering transfers/edit.html.erb within layouts/application
+  [1m[36mTransport Load (0.4ms)[0m  [1m[34mSELECT "transports".* FROM "transports" WHERE "transports"."user_id" = $1 ORDER BY position ASC[0m  [["user_id", 1]]
+  ↳ app/views/transfers/_form.html.erb:53
+  Rendered transfers/_form.html.erb (5.1ms)
+  Rendered transfers/edit.html.erb within layouts/application (9.7ms)
+  Rendered shared/_navbar.html.erb (4.2ms)
+Completed 200 OK in 212ms (Views: 208.4ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/transfers/6" for ::1 at 2019-09-20 11:34:37 +0200
+Processing by TransfersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pLvx1kmkQ/QFBUIRZFDwUWcng5LfWnK0Rk/Gex6VZ6RbOoulGBS4wyA12JzyU1wNrbXjYLr1DrWhQWoD6akkMA==", "transfer"=>{"transfer_date"=>"2019-09-20", "departure"=>"20:00", "start_point"=>"Gorizia", "start_address"=>"Via Del Santo, 54", "arrival"=>"20:30", "destination"=>"Udine", "destination_address"=>"Via Malignani, 8", "path_lenght"=>"60.0", "transport_id"=>"5", "note"=>"Trasferimento di test..."}, "button"=>"", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mTransfer Load (0.4ms)[0m  [1m[34mSELECT  "transfers".* FROM "transfers" WHERE "transfers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/transfers_controller.rb:65
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transfers_controller.rb:44
+  [1m[36mTransfer Update (0.5ms)[0m  [1m[33mUPDATE "transfers" SET "departure" = $1, "arrival" = $2, "note" = $3, "updated_at" = $4 WHERE "transfers"."id" = $5[0m  [["departure", "20:00:00"], ["arrival", "20:30:00"], ["note", "Trasferimento di test..."], ["updated_at", "2019-09-20 11:34:37.056523"], ["id", 6]]
+  ↳ app/controllers/transfers_controller.rb:44
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transfers_controller.rb:44
+Redirected to http://localhost:3000/transfers/6
+Completed 302 Found in 10ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/transfers/6" for ::1 at 2019-09-20 11:34:37 +0200
+Processing by TransfersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mTransfer Load (0.4ms)[0m  [1m[34mSELECT  "transfers".* FROM "transfers" WHERE "transfers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/transfers_controller.rb:65
+  [1m[36mCACHE Transfer Load (0.0ms)[0m  [1m[34mSELECT  "transfers".* FROM "transfers" WHERE "transfers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/transfers_controller.rb:16
+  Rendering transfers/show.html.erb within layouts/application
+  [1m[36mTransport Load (0.3ms)[0m  [1m[34mSELECT  "transports".* FROM "transports" WHERE "transports"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/helpers/transfers_helper.rb:6
+  Rendered transfers/show.html.erb within layouts/application (5.4ms)
+  Rendered shared/_navbar.html.erb (4.6ms)
+Completed 200 OK in 231ms (Views: 227.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/transfers" for ::1 at 2019-09-20 11:34:42 +0200
+Processing by TransfersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering transfers/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "transfers"."id") FROM "transfers" WHERE "transfers"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/transfers/index.html.erb:18
+  [1m[36mTransfer Load (0.5ms)[0m  [1m[34mSELECT  DISTINCT "transfers".* FROM "transfers" WHERE "transfers"."user_id" = $1 ORDER BY "transfers"."transfer_date" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 6], ["OFFSET", 0]]
+  ↳ app/views/transfers/index.html.erb:18
+  Rendered transfers/index.html.erb within layouts/application (12.6ms)
+  Rendered shared/_navbar.html.erb (4.4ms)
+Completed 200 OK in 228ms (Views: 224.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/transports" for ::1 at 2019-09-20 11:34:45 +0200
+Processing by TransportsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering transports/index.html.erb within layouts/application
+  [1m[36mTransport Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "transports".* FROM "transports" WHERE "transports"."user_id" = $1 ORDER BY "transports"."position" ASC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/transports/index.html.erb:27
+  Rendered transports/index.html.erb within layouts/application (8.1ms)
+  Rendered shared/_navbar.html.erb (3.9ms)
+Completed 200 OK in 219ms (Views: 215.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/transports/new" for ::1 at 2019-09-20 11:34:47 +0200
+Processing by TransportsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering transports/new.html.erb within layouts/application
+  Rendered transports/_form.html.erb (2.2ms)
+  Rendered transports/new.html.erb within layouts/application (6.2ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 217ms (Views: 214.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/transports" for ::1 at 2019-09-20 11:34:49 +0200
+Processing by TransportsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r3+6EYQnMKhkhnVgBc9pxo6BUgB0Ln1ONlO6pXa1AJ2Z1knc9yzXS964YMQveTHkGOhi9nGJHhKg6aLj+yURzg==", "transport"=>{"name"=>"", "position"=>""}, "button"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transports_controller.rb:29
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/transports_controller.rb:29
+  Rendering transports/new.html.erb within layouts/application
+  Rendered transports/_form.html.erb (2.3ms)
+  Rendered transports/new.html.erb within layouts/application (5.9ms)
+  Rendered shared/_navbar.html.erb (4.3ms)
+Completed 200 OK in 219ms (Views: 213.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/transports" for ::1 at 2019-09-20 11:34:51 +0200
+Processing by TransportsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering transports/index.html.erb within layouts/application
+  [1m[36mTransport Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "transports".* FROM "transports" WHERE "transports"."user_id" = $1 ORDER BY "transports"."position" ASC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/transports/index.html.erb:27
+  Rendered transports/index.html.erb within layouts/application (7.2ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 220ms (Views: 217.4ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-09-20 11:34:59 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DIgHzaf1Zt3JW5BFSmSVYOG4ZHXLVjGb/iEJyLK15ZscOo2UFCzzHsLXM3lJXKEI297pLnIWZIT6+Or6JSHfuw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davo/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-09-20 11:34:59 +0200
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-20 11:34:59 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 276ms (Views: 275.0ms | ActiveRecord: 0.0ms)
+
+
