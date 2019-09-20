@@ -3,7 +3,7 @@ class OfficesController < ApplicationController
 
   def index
     @q = Office.ransack(params[:q])
-    @offices = @q.result(distinct: true).order(position: "ASC").paginate(page: params[:page], per_page: 20)
+    @offices = @q.result(distinct: true).order(position: "ASC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 20)
     respond_to do |format|
       format.html
       format.json
@@ -21,7 +21,8 @@ class OfficesController < ApplicationController
   end
 
   def create
-    @office = Office.new(office_params)
+    @user = current_user
+    @office = @user.offices.build(office_params)
 
     respond_to do |format|
       if @office.save
@@ -61,6 +62,6 @@ class OfficesController < ApplicationController
   end
 
   def office_params
-    params.require(:office).permit(:name, :position)
+    params.require(:office).permit(:name, :position, :user_id)
   end
 end

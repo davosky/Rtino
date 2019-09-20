@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class TransfersController < ApplicationController
-  before_action :set_transfer, only: [:show, :edit, :update, :destroy]
+  before_action :set_transfer, only: %i[show edit update destroy]
 
   def index
     @q = Transfer.ransack(params[:q])
-    @transfers = @q.result(distinct: true).order(transfer_date: "DESC").paginate(page: params[:page], per_page: 6)
+    @transfers = @q.result(distinct: true).order(transfer_date: "DESC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 6)
     respond_to do |format|
       format.html
       format.json
@@ -21,11 +23,11 @@ class TransfersController < ApplicationController
     @transfer = Transfer.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
-    @transfer = Transfer.new(transfer_params)
+    @user = current_user
+    @transfer = @user.transfers.build(transfer_params)
     respond_to do |format|
       if @transfer.save
         format.html { redirect_to @transfer, notice: "Transfer was successfully created." }
@@ -64,6 +66,6 @@ class TransfersController < ApplicationController
   end
 
   def transfer_params
-    params.require(:transfer).permit(:name, :transfer_date, :departure, :start_point, :start_address, :arrival, :destination, :destination_address, :path_lenght, :transport_id, :travel_time)
+    params.require(:transfer).permit(:name, :transfer_date, :departure, :start_point, :start_address, :arrival, :destination, :destination_address, :path_lenght, :transport_id, :travel_time, :note, :user_id)
   end
 end

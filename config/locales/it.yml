@@ -6,6 +6,7 @@ it:
         user_type: Tipologia
         name: Nome
         forename: Cognome
+        department: Dipartimento
         office: Ufficio
         email: E-Mail
         password: Password
@@ -21,6 +22,8 @@ it:
         structure: Struttura
         assistance_id: Assistenza
         assistance: Assistenza
+        user: Utente
+        user_id: Utente
         created_at: Ctreato il
         updated_at: Aggiornato il
       assistance:
@@ -41,30 +44,40 @@ it:
         name: Nome
         position: Posizione
         reports: Rapporti
+        user: Utente
+        user_id: Utente
         created_at: Ctreato il
         updated_at: Aggiornato il
       structure:
         name: Nome
         position: Posizione
         reports: Rapporti
+        user: Utente
+        user_id: Utente
         created_at: Ctreato il
         updated_at: Aggiornato il
       office:
         name: Nome
         position: Posizione
         reports: Rapporti
+        user: Utente
+        user_id: Utente
         created_at: Ctreato il
         updated_at: Aggiornato il
       category:
         name: Nome
         position: Posizione
         reports: Rapporti
+        user: Utente
+        user_id: Utente
         created_at: Ctreato il
         updated_at: Aggiornato il
       transport:
         name: Nome
         position: Posizione
         transfers: Trasferimenti
+        user: Utente
+        user_id: Utente
         created_at: Ctreato il
         updated_at: Aggiornato il
       transfer:
@@ -79,6 +92,8 @@ it:
         path_lenght: Lunghezza Percorso
         transport: Trasporto
         transport_id: Trasporto
+        user: Utente
+        user_id: Utente
         created_at: Ctreato il
         updated_at: Aggiornato il
     errors:

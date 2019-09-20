@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_180634) do
+ActiveRecord::Schema.define(version: 2019_09_20_090724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_180634) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -43,6 +45,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_180634) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "offices", force: :cascade do |t|
@@ -50,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_180634) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_offices_on_user_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -60,9 +66,11 @@ ActiveRecord::Schema.define(version: 2019_09_16_180634) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "assistance_id"
+    t.bigint "user_id"
     t.index ["assistance_id"], name: "index_reports_on_assistance_id"
     t.index ["location_id"], name: "index_reports_on_location_id"
     t.index ["structure_id"], name: "index_reports_on_structure_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "structures", force: :cascade do |t|
@@ -70,6 +78,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_180634) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_structures_on_user_id"
   end
 
   create_table "transfers", force: :cascade do |t|
@@ -83,11 +93,13 @@ ActiveRecord::Schema.define(version: 2019_09_16_180634) do
     t.string "destination_address"
     t.decimal "path_lenght"
     t.bigint "transport_id"
-    t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "travel_time"
+    t.time "travel_time"
+    t.text "note"
+    t.bigint "user_id"
     t.index ["transport_id"], name: "index_transfers_on_transport_id"
+    t.index ["user_id"], name: "index_transfers_on_user_id"
   end
 
   create_table "transports", force: :cascade do |t|
@@ -95,6 +107,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_180634) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_transports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -117,8 +131,15 @@ ActiveRecord::Schema.define(version: 2019_09_16_180634) do
   add_foreign_key "assistances", "categories"
   add_foreign_key "assistances", "offices"
   add_foreign_key "assistances", "reports"
+  add_foreign_key "categories", "users"
+  add_foreign_key "locations", "users"
+  add_foreign_key "offices", "users"
   add_foreign_key "reports", "assistances"
   add_foreign_key "reports", "locations"
   add_foreign_key "reports", "structures"
+  add_foreign_key "reports", "users"
+  add_foreign_key "structures", "users"
   add_foreign_key "transfers", "transports"
+  add_foreign_key "transfers", "users"
+  add_foreign_key "transports", "users"
 end

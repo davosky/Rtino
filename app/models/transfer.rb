@@ -1,5 +1,6 @@
 class Transfer < ApplicationRecord
   belongs_to :transport, optional: true
+  belongs_to :user, optional: true
 
   validates :transfer_date, presence: true
   validates :departure, presence: true

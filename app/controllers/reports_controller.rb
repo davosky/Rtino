@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
 
   def index
     @q = Report.ransack(params[:q])
-    @reports = @q.result(distinct: true).order(date: "DESC").paginate(page: params[:page], per_page: 6)
+    @reports = @q.result(distinct: true).order(date: "DESC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 6)
     respond_to do |format|
       format.html
       format.json
@@ -22,6 +22,8 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
+    @user = current_user
+    @report = @user.reports.build(report_params)
 
     respond_to do |format|
       if @report.save
@@ -61,6 +63,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:name, :date, :location_id, :structure_id, assistances_attributes: Assistance.attribute_names.map(&:to_sym).push(:_destroy))
+    params.require(:report).permit(:name, :date, :location_id, :structure_id, :user_id, assistances_attributes: Assistance.attribute_names.map(&:to_sym).push(:_destroy))
   end
 end

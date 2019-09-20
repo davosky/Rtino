@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   def index
     @q = Category.ransack(params[:q])
-    @categories = @q.result(distinct: true).order(position: "ASC").paginate(page: params[:page], per_page: 20)
+    @categories = @q.result(distinct: true).order(position: "ASC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 20)
     respond_to do |format|
       format.html
       format.json
@@ -21,7 +21,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    @user = current_user
+    @category = @user.categories.build(category_params)
 
     respond_to do |format|
       if @category.save
@@ -61,6 +62,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name, :position)
+    params.require(:category).permit(:name, :position, :user_id)
   end
 end

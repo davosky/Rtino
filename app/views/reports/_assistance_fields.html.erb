@@ -27,11 +27,11 @@
       </div>
       <div class='field'>
         <%= f.label :category_id, class: 'text-info font-lite' %>
-        <%= f.collection_select(:category_id, Category.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+        <%= f.collection_select(:category_id, Category.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
       </div>
       <div class='field'>
         <%= f.label :office_id, class: 'text-info font-lite' %>
-        <%= f.collection_select(:office_id, Office.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+        <%= f.collection_select(:office_id, Office.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
       </div>
       <br>
       <span class='pull-right'>

@@ -3,7 +3,7 @@ class StructuresController < ApplicationController
 
   def index
     @q = Structure.ransack(params[:q])
-    @structures = @q.result(distinct: true).order(position: "ASC").paginate(page: params[:page], per_page: 20)
+    @structures = @q.result(distinct: true).order(position: "ASC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 20)
     respond_to do |format|
       format.html
       format.json
@@ -21,7 +21,8 @@ class StructuresController < ApplicationController
   end
 
   def create
-    @structure = Structure.new(structure_params)
+    @user = current_user
+    @structure = @user.structures.build(structure_params)
 
     respond_to do |format|
       if @structure.save
@@ -61,6 +62,6 @@ class StructuresController < ApplicationController
   end
 
   def structure_params
-    params.require(:structure).permit(:name, :position)
+    params.require(:structure).permit(:name, :position, :user_id)
   end
 end

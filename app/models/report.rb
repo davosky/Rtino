@@ -1,6 +1,7 @@
 class Report < ApplicationRecord
   belongs_to :location, optional: true
   belongs_to :structure, optional: true
+  belongs_to :user, optional: true
   has_many :assistances, dependent: :destroy
   accepts_nested_attributes_for :assistances, reject_if: :all_blank, allow_destroy: true
 

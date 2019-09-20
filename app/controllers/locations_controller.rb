@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
 
   def index
     @q = Location.ransack(params[:q])
-    @locations = @q.result(distinct: true).order(position: "ASC").paginate(page: params[:page], per_page: 20)
+    @locations = @q.result(distinct: true).order(position: "ASC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 20)
     respond_to do |format|
       format.html
       format.json
@@ -21,7 +21,8 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(location_params)
+    @user = current_user
+    @location = @user.locations.build(location_params)
 
     respond_to do |format|
       if @location.save
@@ -61,6 +62,6 @@ class LocationsController < ApplicationController
   end
 
   def location_params
-    params.require(:location).permit(:name, :position)
+    params.require(:location).permit(:name, :position, :user_id)
   end
 end

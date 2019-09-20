@@ -15,11 +15,11 @@
   </div>
   <div class='field'>
     <%= f.label :location_id, class: 'text-primary font-lite' %>
-    <%= f.collection_select(:location_id, Location.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+    <%= f.collection_select(:location_id, Location.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
   </div>
   <div class='field'>
     <%= f.label :structure_id, class: 'text-primary font-lite' %>
-    <%= f.collection_select(:structure_id, Structure.order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+    <%= f.collection_select(:structure_id, Structure.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
   </div>
   <hr class='hr-gray-lighter-less'>
   <!-- NESTED -->
