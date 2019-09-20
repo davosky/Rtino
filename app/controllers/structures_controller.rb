@@ -3,7 +3,7 @@ class StructuresController < ApplicationController
 
   def index
     @q = Structure.ransack(params[:q])
-    @structures = @q.result(distinct: true).order(position: "ASC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 20)
+    @structures = @q.result(distinct: true).order(position: 'ASC').where(user_id: current_user.id).paginate(page: params[:page], per_page: 20)
     respond_to do |format|
       format.html
       format.json
@@ -26,7 +26,7 @@ class StructuresController < ApplicationController
 
     respond_to do |format|
       if @structure.save
-        format.html { redirect_to structures_path, notice: "Structure was successfully created." }
+        format.html { redirect_to structures_path, notice: 'Structure was successfully created.' }
         format.json { render :show, status: :created, location: @structure }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class StructuresController < ApplicationController
   def update
     respond_to do |format|
       if @structure.update(structure_params)
-        format.html { redirect_to structures_path, notice: "Structure was successfully updated." }
+        format.html { redirect_to structures_path, notice: 'Structure was successfully updated.' }
         format.json { render :show, status: :ok, location: @structure }
       else
         format.html { render :edit }
@@ -50,7 +50,7 @@ class StructuresController < ApplicationController
   def destroy
     @structure.destroy
     respond_to do |format|
-      format.html { redirect_to structures_url, notice: "Structure was successfully destroyed." }
+      format.html { redirect_to structures_url, notice: 'Structure was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

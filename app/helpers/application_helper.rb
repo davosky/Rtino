@@ -1,6 +1,6 @@
 module ApplicationHelper
   def admin?
-    current_user.user_type == "admin"
+    current_user.user_type == 'admin'
   end
 
   def link_to_add_row(name, f, association, **args)
@@ -9,6 +9,6 @@ module ApplicationHelper
     fields = f.fields_for(association, new_object, child_index: id) do |builder|
       render(association.to_s.singularize, f: builder)
     end
-    link_to(name, "#", class: "add_fields " + args[:class], data: { id: id, fields: fields.gsub("\n", "") })
+    link_to(name, '#', class: 'add_fields ' + args[:class], data: { id: id, fields: fields.gsub('\n', '') })
   end
 end
