@@ -27,8 +27,10 @@ gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'wicked_pdf', '~> 1.1'
 gem 'will_paginate', '~> 3.1', '>= 3.1.8'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
+gem 'wkhtmltopdf_binary', '~> 0.12.3.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

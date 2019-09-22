@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
 
   def index
     @q = Report.ransack(params[:q])
-    @reports = @q.result(distinct: true).order(date: 'DESC').where(user_id: current_user.id).paginate(page: params[:page], per_page: 6)
+    @reports = @q.result(distinct: true).order(date: "DESC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 6)
     respond_to do |format|
       format.html
       format.json
@@ -11,6 +11,17 @@ class ReportsController < ApplicationController
   end
 
   def show
+  end
+
+  def pdfprint
+    @user = current_user
+    @q = Report.ransack(params[:q])
+    @reports = @q.result(distinct: true).order(date: "ASC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 100)
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf { render template: "reports/pdfprint", pdf: "pdfprint" }
+    end
   end
 
   def new
@@ -27,7 +38,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
+        format.html { redirect_to @report, notice: "Report was successfully created." }
         format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new }
@@ -39,7 +50,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
+        format.html { redirect_to @report, notice: "Report was successfully updated." }
         format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit }
@@ -51,7 +62,7 @@ class ReportsController < ApplicationController
   def destroy
     @report.destroy
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: 'Report was successfully destroyed.' }
+      format.html { redirect_to reports_url, notice: "Report was successfully destroyed." }
       format.json { head :no_content }
     end
   end

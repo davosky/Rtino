@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'/>
+    <%= stylesheet_link_tag wicked_pdf_asset_base64('pdfprint') %>
+    <title>Elenco Rapporti</title>
+  </head>
+  <body>
+    <div class='text-centered'>
+      <%= inline_svg('pdf_header.svg', size: '680px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+    </div>
+    <hr class='hr-primary'>
+    <span class='text-primary'>
+      <small>
+        Elenco rapporti di assistenza di:&nbsp;&nbsp;<%= @user.name %>&nbsp;<%= @user.forename %>
+      </small>
+    </span>
+    <span class='pull-right text-primary'>
+      <small>
+        <%= @user.department %>
+        &nbsp;|&nbsp;
+        <%= @user.office %>
+      </small>
+    </span>
+    <br><br>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <th>Data:</th>
+          <th>Posizione</th>
+          <th>Struttura</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td><%= date?(report) %></td>
+            <td><%= location?(report) %></td>
+            <td><%= structure?(report) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>
