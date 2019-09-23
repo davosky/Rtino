@@ -32,6 +32,17 @@ body {
   padding: 0;
 }
 
+.report {
+  background-color: #f6f6e4;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+}
+
 @page {
   size: A4;
   orientation: landscape;

@@ -25,7 +25,12 @@
             </li>
             <li>
               <%= link_to pdfprint_reports_path do %>
-                <i class='fas fa-print link-awesome'></i>&nbsp;&nbsp;&nbsp;Stampa Rapporti
+                <i class='fas fa-print link-awesome'></i>&nbsp;&nbsp;&nbsp;Stampa Elenco Rapporti
+              <% end %>
+            </li>
+            <li>
+              <%= link_to pdfprintreport_reports_path do %>
+                <i class='fas fa-print link-awesome'></i>&nbsp;<i class="fas fa-file-pdf link-awesome"></i>&nbsp;&nbsp;&nbsp;Stampa Rapporti Completi
               <% end %>
             </li>
             <li class='divider'></li>

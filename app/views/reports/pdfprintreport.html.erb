@@ -1,0 +1,82 @@
+<h3>
+  <%= inline_svg('report_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Stampa Rapporti Completi</span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<%= search_form_for @q, id: 'search-form', url: pdfprintreport_reports_path do |f| %>
+<div class='row'>
+  <div class='col col-lg-3'>
+    <div class='field'>
+      <%= f.label 'Data Inizio:', class: 'font-lite' %><br>
+      <%= f.text_field :date_gteq, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label 'Data Fine:', class: 'font-lite' %><br>
+      <%= f.text_field :date_lteq, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='col col-lg-3'>
+    <div class='field'>
+      <%= f.label 'Posizione:', class: 'font-lite' %><br>
+      <%= f.text_field :location_name_cont, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label 'Struttura:', class: 'font-lite' %><br>
+      <%= f.text_field :structure_name_cont, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='col col-lg-3'>
+    <br>
+    <div class='form-actions'>
+      <%= button_tag type: 'submit', class: 'btn btn-success btn-sm' do %>
+      <i class='fas fa-search'></i>&nbsp;&nbsp;Cerca&nbsp;&nbsp;&nbsp;
+    <% end %>
+  </div>
+  <hr class='hr-gray-lighter-less'>
+  <!-- PDF PRINT -->
+  <% if printable?(@reports) %>
+    <%= link_to pdfprintreport_reports_path(request.parameters.merge(format: 'pdf')), target: 'new', class: 'btn btn-warning btn-sm' do %>
+    <i class='fas fa-print'></i>&nbsp;&nbsp;Stampa Elenco Rapporti Completi
+  <% end %>
+<% end %>
+</div>
+</div>
+<% end %>
+<br>
+<hr class='hr-gray-lighter-less'>
+<br>
+<table class='table table-striped'>
+<tbody>
+<% @reports.each do |report| %>
+<tr>
+  <td>
+    <i class='far fa-calendar-alt text-primary'></i>&nbsp;<%= date?(report) %>
+    &nbsp;&nbsp;&nbsp;
+    <i class='fas fa-map-marker-alt text-primary'></i>&nbsp;<%= location?(report) %>
+    &nbsp;&nbsp;&nbsp;
+    <i class='far fa-building text-primary'></i>&nbsp;<%= structure?(report) %>
+    <br>
+    <% report.assistances.each  do |assistance| %>
+      <span class='text-info'>
+        <i class='far fa-clock'></i>&nbsp;&nbsp;Ora Inizio:</span>&nbsp;<%= l(assistance.start_time, format: '%H : %M') %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>
+        <i class='far fa-clock'></i>&nbsp;&nbsp;Ora Fine:</span>&nbsp;<%= l(assistance.end_time, format: '%H : %M') %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>
+        <i class='fas fa-chair'></i>&nbsp;&nbsp;Ufficio:</span>&nbsp;<%= office?(assistance) %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-info'>
+        <i class='fas fa-list'></i>&nbsp;&nbsp;Categoria:</span>&nbsp;<%= category?(assistance) %>
+      <br>
+      <span class='text-info'>Descrizione:</span>&nbsp;<small class="font-lite"><%= assistance.description %></small>
+      <br>
+      <span class='text-info'>Note:</span>&nbsp;<small class="font-lite"><%= assistance.note %></small>
+      <br><br>
+    <% end %>
+  </td>
+</tr>
+<% end %>
+</tbody>
+</table>

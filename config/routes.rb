@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :reports do
     collection do
       get :pdfprint
+      get :pdfprintreport
     end
   end
   resources :structures

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'/>
+    <%= stylesheet_link_tag wicked_pdf_asset_base64('pdfprint') %>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous'>
+    <title>Elenco Rapporti</title>
+  </head>
+  <body>
+    <% @reports.each do |report| %>
+      <div class='text-centered'>
+        <%= inline_svg('pdf_header.svg', size: '680px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+      </div>
+      <hr class='hr-primary'>
+      <span class='text-primary'>
+        <small>
+          Rapporto di Assistenza di:&nbsp;&nbsp;<%= @user.name %>&nbsp;<%= @user.forename %>
+        </small>
+      </span>
+      <span class='pull-right text-primary'>
+        <small>
+          <%= @user.department %>
+          &nbsp;|&nbsp;
+          <%= @user.office %>
+        </small>
+      </span>
+      <br><br>
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Data:</th>
+            <th>Posizione</th>
+            <th>Struttura</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= date?(report) %></td>
+            <td><%= location?(report) %></td>
+            <td><%= structure?(report) %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class='report'>
+        <i class='fas fa-tools'></i>&nbsp;Interventi:<br><br>
+        <% report.assistances.each  do |assistance| %>
+          <span class='text-primary'>
+            <i class='far fa-clock'></i>&nbsp;&nbsp;Ora Inizio:</span>&nbsp;<%= l(assistance.start_time, format: '%H : %M') %>
+          &nbsp;&nbsp;&nbsp;
+          <span class='text-primary'>
+            <i class='far fa-clock'></i>&nbsp;&nbsp;Ora Fine:</span>&nbsp;<%= l(assistance.end_time, format: '%H : %M') %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class='text-primary'>
+            <i class='fas fa-chair'></i>&nbsp;&nbsp;Ufficio:</span>&nbsp;<%= office?(assistance) %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class='text-primary'>
+            <i class='fas fa-list'></i>&nbsp;&nbsp;Categoria:</span>&nbsp;<%= category?(assistance) %>
+          <br><br>
+          <span class='text-primary'>Descrizione:</span>&nbsp;<br>
+          <%= assistance.description %>
+          <br><br>
+          <span class='text-primary'>Note:</span>&nbsp;<br>
+          <%= assistance.note %>
+          <hr class='hr-gray-lighter-less'>
+        <% end %>
+      </div>
+      <br>
+      <p style='page-break-before: always'></body>
+    <% end %>
+  </html>

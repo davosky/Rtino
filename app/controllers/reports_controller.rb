@@ -16,11 +16,22 @@ class ReportsController < ApplicationController
   def pdfprint
     @user = current_user
     @q = Report.ransack(params[:q])
-    @reports = @q.result(distinct: true).order(date: "ASC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 100)
+    @reports = @q.result(distinct: true).order(date: "DESC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 100)
     respond_to do |format|
       format.html
       format.json
       format.pdf { render template: "reports/pdfprint", pdf: "pdfprint" }
+    end
+  end
+
+  def pdfprintreport
+    @user = current_user
+    @q = Report.ransack(params[:q])
+    @reports = @q.result(distinct: true).order(date: "DESC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 100)
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf { render template: "reports/pdfprintreport", pdf: "pdfprintreport" }
     end
   end
 

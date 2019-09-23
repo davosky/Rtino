@@ -3,20 +3,14 @@
 <div class='panel panel-info'>
   <div class='panel-body'>
     <div class='nested-fields'>
-      <span class='text-info'>Ora Inizio</span><br>
-      <div class='input-group date' id='datetimepicker1'>
-        <span class='input-group-addon'>
-          <span class='glyphicon glyphicon-time'></span>
-        </span>
-        <%= f.text_field :start_time, class: 'form-control'%>
+      <div class='field'>
+        <%= f.label :start_time, class: 'text-info font-lite' %>
+        <%= f.time_select :start_time, class: 'btn btn-primary btn-sm'%>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.label :end_time, class: 'text-info font-lite' %>
+        <%= f.time_select :end_time, class: 'btn btn-primary btn-sm'%>
       </div>
-      <span class='text-info'>Ora Fine</span><br>
-      <div class='input-group date' id='datetimepicker2'>
-        <span class='input-group-addon'>
-          <span class='glyphicon glyphicon-time'></span>
-        </span>
-        <%= f.text_field :end_time, class: 'form-control'%>
-      </div>
+      <br>
       <div class='field'>
         <%= f.label :description, class: 'text-info font-lite' %>
         <%= f.text_area :description, class: 'form-control' %>
@@ -45,11 +39,3 @@
   </div>
 </div>
 </div>
-<script type='text/javascript'>
-  $(function () {
-    $('#datetimepicker1').datetimepicker({format: 'H:mm'});
-  });
-  $(function () {
-    $('#datetimepicker2').datetimepicker({format: 'H:mm'});
-  });
-</script>
