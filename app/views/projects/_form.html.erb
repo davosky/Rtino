@@ -1,0 +1,82 @@
+<%= form_with(model: project, local: true) do |f| %>
+  <% if project.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(project.errors.count, 'error') %> Non posso salvare il seguente Progetto causa errori:</h2>
+      <ul>
+        <% project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='field'>
+    <%= f.label :name, class: 'text-primary font-lite' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class='field'>
+    <%= f.label :start_date, class: 'text-primary font-lite' %>
+    <%= f.text_field :start_date, class: 'datepicker form-control' %>
+  </div>
+  <div class='field'>
+    <%= f.label :end_date, class: 'text-primary font-lite' %>
+    <%= f.text_field :end_date, class: 'datepicker form-control' %>
+  </div>
+  <div class='field'>
+    <%= f.label :project_typology_id, class: 'text-primary font-lite' %>
+    <%= f.collection_select(:project_typology_id, ProjectTypology.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+  </div>
+  <div class='field'>
+    <%= f.label :project_priority, class: 'text-primary font-lite' %>
+    <%= f.text_field :project_priority, class: 'form-control' %>
+  </div>
+  <div class='field'>
+    <%= f.label :location_id, class: 'text-primary font-lite' %>
+    <%= f.collection_select(:location_id, Location.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+  </div>
+  <div class='field'>
+    <%= f.label :structure_id, class: 'text-primary font-lite' %>
+    <%= f.collection_select(:structure_id, Structure.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+  </div>
+  <div class='field'>
+    <%= f.label :office_id, class: 'text-primary font-lite' %>
+    <%= f.collection_select(:office_id, Office.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+  </div>
+  <div class='field'>
+    <%= f.label :project_description, class: 'text-primary font-lite' %>
+    <%= f.text_area :project_description, class: 'form-control' %>
+  </div>
+  <div class='field'>
+    <%= f.label :project_status_id, class: 'text-primary font-lite' %>
+    <%= f.collection_select(:project_status_id, ProjectStatus.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+  </div>
+  <hr class='hr-gray-lighter-less'>
+  <!-- NESTED -->
+  <div id='tasks'>
+    <%= f.fields_for :tasks do |task| %>
+      <%= render 'task_fields', f: task %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association f, :tasks  do %>
+        <span class='text-info'>
+          <i class='fas fa-plus'></i><i class='fas fa-wrench'></i>&nbsp;&nbsp;Aggiungi Task
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <!-- /NESTED -->
+  <hr class='hr-primary'>
+  <div class='form-group'>
+    <%= button_tag(type: 'submit', class: 'btn btn-success btn-sm font-lite') do %>
+      <i class='fas fa-save'></i>&nbsp;&nbsp;SALVA
+    <% end %>
+  </div>
+<% end %>
+<script>
+  $(document).ready(function () {
+    $('.datepicker').datepicker({
+      language: 'it',
+      todayBtn: 'linked',
+      orientation: 'bottom auto'
+    });
+  });
+</script>

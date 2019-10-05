@@ -96,6 +96,51 @@ it:
         user_id: Utente
         created_at: Ctreato il
         updated_at: Aggiornato il
+      project:
+        name: Progetto
+        start_date: Data Inizio
+        end_date: Data Fine
+        project_typology_id: Tipologia Progetto
+        project_typology: Tipologia Progetto
+        project_description: Descrizione Progetto
+        project_priority: Priorità Progetto
+        location_id: Posizione
+        location: Posizione
+        structure_id: Struttura
+        structure: Struttura
+        office_id: Ufficio
+        office: Ufficio
+        project_status_id: Stato Progetto
+        project_status: Stato Progetto
+        user: Utente
+        user_id: Utente
+        created_at: Ctreato il
+        updated_at: Aggiornato il
+      project_status:
+        name: Nome
+        position: Posizione
+        projects: Progetti
+        user: Utente
+        user_id: Utente
+        created_at: Ctreato il
+        updated_at: Aggiornato il
+      project_typology:
+        name: Nome
+        position: Posizione
+        projects: Progetti
+        user: Utente
+        user_id: Utente
+        created_at: Ctreato il
+        updated_at: Aggiornato il
+      task:
+        name: Task
+        start_date: Data Inizio
+        end_date: Data Fine
+        description: Descrizione
+        project_id: Progetto
+        project: Progetto
+        created_at: Ctreato il
+        updated_at: Aggiornato il
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

@@ -1,0 +1,50 @@
+<h3>
+  <%= inline_svg('project_typology_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Tipologie Progetto</span>
+  <span class='pull-right'>
+    <h6>
+      <% if admin? %>
+        <%= link_to new_project_typology_path do %>
+          <%= inline_svg('project_typology_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+          Nuova Tipologia
+        <% end %>
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='panel panel-default'>
+  <div class='panel-body'>
+    <table class='table table-hover'>
+      <thead>
+        <tr>
+          <td>Nome</td>
+          <td>Posizione</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @project_typologies.each do |project_typology| %>
+          <tr>
+            <td class='text-primary'><%= project_typology.name %></td>
+            <td class='text-primary'><%= project_typology.position %></td>
+            <td>
+              <%= link_to edit_project_typology_path(project_typology), title: 'Modifica la Tipologia Corrente', rel: 'tooltip' do %>
+                <i class='fas fa-pencil-alt text-warning'></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to project_typology, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare la Tipologia corrente?' }, title: 'Elimina ls Tipologia Corrente', rel: 'tooltip' do %>
+                <i class='fas fa-trash-alt text-danger'></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <span class='text-centered'>
+      <%= will_paginate @project_typologies, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
+    </span>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<h3>
+  <%= inline_svg('project_typology_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Crea una Nuova Tipologia</span>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to project_typologies_path do %>
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<%= render 'form', project_typology: @project_typology %>
+<br>

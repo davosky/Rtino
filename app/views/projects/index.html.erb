@@ -1,0 +1,69 @@
+<h3>
+  <%= inline_svg('project_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Progetti</span>
+  <span class='pull-right'>
+    <h6>
+      <% if admin? %>
+        <%= link_to new_project_path do %>
+        <%= inline_svg('project_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+        Nuovo Progetto
+      <% end %>
+    <% end %>
+  </h6>
+</span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='container-fluid'>
+<% @projects.each_slice(3)  do |projects| %>
+  <div class='row'>
+    <% projects.each  do |project| %>
+      <div class='col-lg-4'>
+        <div class='panel panel-primary'>
+          <div class='panel-body'>
+            <%= link_to project do %>
+            <h3>
+              <span class='text-primary'>
+                <%= inline_svg('project_icon.svg', size: '26px * 26px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+                <%= t(project.name) %>
+              </span>
+            <% end %>
+          </h3>
+          <br>
+          <small class='text-primary'>
+            <i class='far fa-calendar-alt'></i>&nbsp; Inizio:&nbsp<%= start_date?(project) %>
+            <br>
+            <i class='far fa-calendar-alt'></i>&nbsp; Fine:&nbsp<%= end_date?(project) %>
+          </small>
+
+          <hr class='hr-gray-lighter-less'>
+          <span class='pull-left'>
+            <small>
+              <i class='fas fa-map-marker-alt'></i>&nbsp;<%= location?(project) %>
+            </small>
+          </span>
+          <span class='pull-right'>
+            <small>
+              <i class='far fa-building'></i>&nbsp;<%= structure?(project) %></small>
+          </span>
+          <br>
+          <span class='pull-left'>
+            <small>
+              <i class='fas fa-toolbox'></i>&nbsp;<%= project_typology?(project) %>
+            </small>
+          </span>
+          <span class='pull-right'>
+            <small>
+              <i class='fas fa-clipboard-check'></i>&nbsp;<%= project_status?(project) %></small>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% end %>
+<br>
+<span class='text-centered'>
+<%= will_paginate @projects, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
+</span>
+</div>

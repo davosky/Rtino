@@ -43,7 +43,6 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = Report.new(report_params)
     @user = current_user
     @report = @user.reports.build(report_params)
 

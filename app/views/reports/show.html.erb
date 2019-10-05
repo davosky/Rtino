@@ -22,7 +22,7 @@
 <div class='panel panel-primary'>
   <div class='panel-body'>
     <div>
-      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data: </span><%= l(@report.date, format: '%A %d %B %Y') %>
+      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data: </span><%= date?(@report) %>
       &nbsp;
       <span class='text-primary'><i class='fas fa-map-marker-alt'></i>&nbsp;&nbsp;Posizione: </span><%= location?(@report) %>
       &nbsp;

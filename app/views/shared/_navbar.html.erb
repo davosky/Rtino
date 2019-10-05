@@ -13,7 +13,7 @@
       <ul class='nav navbar-nav'>
         <li class='dropdown'>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>
-            <i class='fas fa-clipboard-list'></i>
+            <i class='fas fa-clipboard-list'></i>&nbsp;&nbsp;Rapporti
             <span class='caret'></span></a>
           <ul class='dropdown-menu' role='menu'>
             <li>
@@ -25,12 +25,12 @@
             </li>
             <li>
               <%= link_to pdfprint_reports_path do %>
-                <i class='fas fa-print link-awesome'></i>&nbsp;&nbsp;&nbsp;Stampa Elenco Rapporti
+                <i class='fas fa-print link-awesome'></i>&nbsp;<i class='fas fa-list link-awesome'></i>&nbsp;&nbsp;&nbsp;Stampa Elenco Rapporti
               <% end %>
             </li>
             <li>
               <%= link_to pdfprintreport_reports_path do %>
-                <i class='fas fa-print link-awesome'></i>&nbsp;<i class="fas fa-file-pdf link-awesome"></i>&nbsp;&nbsp;&nbsp;Stampa Rapporti Completi
+                <i class='fas fa-print link-awesome'></i>&nbsp;<i class='fas fa-file-pdf link-awesome'></i>&nbsp;&nbsp;&nbsp;Stampa Rapporti Completi
               <% end %>
             </li>
             <li class='divider'></li>
@@ -59,13 +59,13 @@
         </li>
         <li class='dropdown'>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>
-            <i class='fas fa-car'></i>
+            <i class='fas fa-car'></i>&nbsp;&nbsp;Trasferimenti
             <span class='caret'></span></a>
           <ul class='dropdown-menu' role='menu'>
             <li>
               <%= link_to transfers_path do %>
                 <h4>
-                  <i class='fas fa-space-shuttle link-awesome'></i></i>&nbsp;&nbsp;&nbsp;Trasferimenti
+                  <i class='fas fa-space-shuttle link-awesome'></i>&nbsp;&nbsp;&nbsp;Trasferimenti
                 </h4>
               <% end %>
             </li>
@@ -77,25 +77,52 @@
             </li>
           </ul>
         </li>
+        <li class='dropdown'>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>
+            <i class='fas fa-project-diagram'></i>&nbsp;&nbsp;Progetti
+            <span class='caret'></span></a>
+          <ul class='dropdown-menu' role='menu'>
+            <li>
+              <%= link_to projects_path do %>
+                <h4>
+                  <i class='fas fa-clipboard-list link-awesome'></i>&nbsp;&nbsp;&nbsp;Progetti
+                </h4>
+              <% end %>
+            </li>
+            <li class='divider'></li>
+            <li>
+              <%= link_to project_typologies_path do %>
+                <i class='fas fa-toolbox link-awesome'></i>&nbsp;&nbsp;&nbsp;Tipologie Progetti
+              <% end %>
+            </li>
+            <li>
+              <%= link_to project_statuses_path do %>
+                <i class='fas fa-clipboard-check link-awesome'></i>&nbsp;&nbsp;&nbsp;Stati Progetto
+              <% end %>
+            </li>
+          </ul>
+        </li>
       </ul>
       <ul class='nav navbar-nav navbar-right'>
         <li>
           <a href='#'>
             <small>
-              <small>
-                <i class="fas fa-calendar-alt"></i>&nbsp;
-                <%= l(Date.today, format: '%A %d %B %Y') %>
-              </small>
+              <i class='fas fa-calendar-alt'></i>&nbsp;
+              <%= l(Date.today, format: '%A %d %B %Y') %>
             </small>
           </a>
         </li>
         <li>
           <a href='#' class='hidden-xs'>
             <small>
-              <i class="fas fa-user-circle"></i>
+              <i class='fas fa-user-circle'></i>
               &nbsp;&nbsp;<%= current_user.name %>&nbsp;&nbsp;<%= current_user.forename%>
-              &nbsp;&nbsp;|&nbsp;&nbsp;<%= current_user.department %>&nbsp;&nbsp;
-              |&nbsp;&nbsp;<%= current_user.office %>
+              &nbsp;&nbsp;
+              <i class='far fa-building'></i>
+              &nbsp;&nbsp;<%= current_user.department %>
+              &nbsp;&nbsp;
+              <i class='fas fa-chair'></i>
+              &nbsp;&nbsp;<%= current_user.office %>
             </small>
           </a>
         </li>

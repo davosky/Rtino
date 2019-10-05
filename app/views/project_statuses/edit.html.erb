@@ -1,0 +1,15 @@
+<h3>
+  <%= inline_svg('project_status_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Modifica lo Stato Corrente</span>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to project_statuses_path do %>
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<%= render 'form', project_status: @project_status %>
+<br>

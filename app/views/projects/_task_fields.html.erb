@@ -1,0 +1,43 @@
+<h4 class='text-info'>Task</h4>
+<br>
+<div class='panel panel-info'>
+  <div class='panel-body'>
+    <div class='nested-fields'>
+      <div class='field'>
+        <%= f.label :name, class: 'text-info font-lite' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class='field'>
+        <%= f.label :start_date, class: 'text-info font-lite' %>
+        <%= f.text_field :start_date, class: 'datepicker form-control'%>
+      </div>
+      <div class='field'>
+        <%= f.label :end_date, class: 'text-info font-lite' %>
+        <%= f.text_field :end_date, class: 'datepicker form-control'%>
+      </div>
+      <br>
+      <div class='field'>
+        <%= f.label :description, class: 'text-info font-lite' %>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+      <br>
+      <span class='pull-right'>
+        <%= link_to_remove_association f do %>
+        <span class='text-danger'>
+          <i class='fas fa-trash-alt'></i>&nbsp;&nbsp;Elimina Task
+        </span>
+      <% end %>
+    </span>
+    <br>
+  </div>
+</div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('.datepicker').datepicker({
+      language: 'it',
+      todayBtn: 'linked',
+      orientation: 'bottom auto'
+    });
+  });
+</script>

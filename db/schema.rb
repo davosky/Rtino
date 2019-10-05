@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_090724) do
+ActiveRecord::Schema.define(version: 2019_09_30_093236) do
 
   create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "name"
@@ -55,6 +55,46 @@ ActiveRecord::Schema.define(version: 2019_09_20_090724) do
     t.index ["user_id"], name: "index_offices_on_user_id"
   end
 
+  create_table "project_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_project_statuses_on_user_id"
+  end
+
+  create_table "project_typologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_project_typologies_on_user_id"
+  end
+
+  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "project_typology_id"
+    t.integer "project_priority"
+    t.text "project_description"
+    t.bigint "location_id"
+    t.bigint "structure_id"
+    t.bigint "office_id"
+    t.bigint "project_status_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["location_id"], name: "index_projects_on_location_id"
+    t.index ["office_id"], name: "index_projects_on_office_id"
+    t.index ["project_status_id"], name: "index_projects_on_project_status_id"
+    t.index ["project_typology_id"], name: "index_projects_on_project_typology_id"
+    t.index ["structure_id"], name: "index_projects_on_structure_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "name"
     t.date "date"
@@ -77,6 +117,17 @@ ActiveRecord::Schema.define(version: 2019_09_20_090724) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_structures_on_user_id"
+  end
+
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "project_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
   create_table "transfers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -131,11 +182,20 @@ ActiveRecord::Schema.define(version: 2019_09_20_090724) do
   add_foreign_key "categories", "users"
   add_foreign_key "locations", "users"
   add_foreign_key "offices", "users"
+  add_foreign_key "project_statuses", "users"
+  add_foreign_key "project_typologies", "users"
+  add_foreign_key "projects", "locations"
+  add_foreign_key "projects", "offices"
+  add_foreign_key "projects", "project_statuses"
+  add_foreign_key "projects", "project_typologies"
+  add_foreign_key "projects", "structures"
+  add_foreign_key "projects", "users"
   add_foreign_key "reports", "assistances"
   add_foreign_key "reports", "locations"
   add_foreign_key "reports", "structures"
   add_foreign_key "reports", "users"
   add_foreign_key "structures", "users"
+  add_foreign_key "tasks", "projects"
   add_foreign_key "transfers", "transports"
   add_foreign_key "transfers", "users"
   add_foreign_key "transports", "users"

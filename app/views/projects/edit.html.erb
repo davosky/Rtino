@@ -1,0 +1,19 @@
+<h3>
+  <%= inline_svg('project_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Modificando il Progetto Corrente</span>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to projects_path do %>
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to @project do %>
+        <span class='link-view'><i class='fas fa-eye'></i></span>&nbsp;&nbsp;Visualizza Dettaglio
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<%= render 'form', project: @project %>
+<br>

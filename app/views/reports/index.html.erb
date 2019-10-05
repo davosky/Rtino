@@ -31,18 +31,19 @@
             <span class='pull-right'>
               <small class='text-primary'>
                 <i class='far fa-calendar-alt'></i>&nbsp;
-                <%= l(report.date, format: '%A %d %B %Y') %>
+                <%= date?(report) %>
               </small>
             </span>
           </h3>
           <hr class='hr-gray-lighter-less'>
           <span class='pull-left'>
             <small>
-              <i class='fas fa-map-marker-alt'></i>&nbsp;<%= report.location.name %></small>
+              <i class='fas fa-map-marker-alt'></i>&nbsp;<%= location?(report) %>
+            </small>
           </span>
           <span class='pull-right'>
             <small>
-              <i class='far fa-building'></i>&nbsp;<%= report.structure.name %></small>
+              <i class='far fa-building'></i>&nbsp;<%= structure?(report) %></small>
           </span>
         </div>
       </div>

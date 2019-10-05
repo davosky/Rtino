@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :tasks
+  resources :projects
+  resources :project_statuses
+  resources :project_typologies
   resources :transfers
   resources :transports
   resources :assistances

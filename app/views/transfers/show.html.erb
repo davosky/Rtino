@@ -19,39 +19,43 @@
 </h3>
 <hr class='hr-primary'>
 <br>
-<div>
-  <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data Trasferimento: </span><%= l(@transfer.transfer_date, format: '%A %d %B %Y') %>
-  <span class='pull-right'>
-    <span class='text-primary'><i class='far fa-clock'></i>&nbsp;&nbsp;Ora partenza: </span><%= l(@transfer.departure, format: '%H:%M') %>
-    &nbsp;
-    <span class='text-primary'><i class='far fa-clock'></i>&nbsp;&nbsp;Ora Arrivo: </span><%= l(@transfer.arrival, format: '%H:%M') %>
-  </span>
-  <br>
-  <hr class='hr-gray-lighter-less'>
-  <span class='text-primary'><i class='fas fa-map-marker-alt'></i><i class='fas fa-arrow-up'></i>&nbsp;&nbsp;Punto Partenza: </span><%= @transfer.start_point %>
-  &nbsp;&nbsp;<small class='text-grey'>(<%= @transfer.start_address %>)</small>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <span class='text-primary'><i class='fas fa-map-marker-alt'></i><i class='fas fa-arrow-down'></i>&nbsp;&nbsp;Destinazione: </span><%= @transfer.destination %>
-  &nbsp;&nbsp;&nbsp;<small class='text-grey'>(<%= @transfer.destination_address %>)</small>
-  <span class='pull-right'>
-    <span class='text-primary'><i class='fas fa-road'></i>&nbsp;&nbsp;lunghezza Percorso: </span><%= @transfer.path_lenght %>&nbsp;Km
-  </span>
-  <br>
-  <span class='pull-left'>
-    <span class='text-primary'><i class='fas fa-car-side'></i>&nbsp;&nbsp;Mezzo di trasporto:</span>
-    &nbsp;<%= @transfer.transport.name if transport?(@transfer) %>
-  </span>
-  <br>
-  <hr class='hr-gray-lighter-less'>
-  <h4>
-    <small class='text-primary'>
-      <i class='fas fa-arrow-up'></i><i class='far fa-clock'></i><i class='fas fa-arrow-down'></i>
-    </small>
-    &nbsp;<span class="text-primary">Totale tempo trasferimento:</span>&nbsp;&nbsp;
-    minuti:&nbsp;<%= @totalminute %>&nbsp;<small class='text-grey'>(ore:&nbsp;<%= @totalhour %>)</small>
-  </h4>
-  <hr class='hr-gray-lighter-less'>
-  <span class='text-primary'>Note: </span>
-  <br><br>
-  <span><%= @transfer.note %></span>
+<div class='panel panel-primary'>
+  <div class='panel-body'>
+    <div>
+      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data Trasferimento: </span><%= l(@transfer.transfer_date, format: '%A %d %B %Y') %>
+      <span class='pull-right'>
+        <span class='text-primary'><i class='far fa-clock'></i>&nbsp;&nbsp;Ora partenza: </span><%= l(@transfer.departure, format: '%H:%M') %>
+        &nbsp;
+        <span class='text-primary'><i class='far fa-clock'></i>&nbsp;&nbsp;Ora Arrivo: </span><%= l(@transfer.arrival, format: '%H:%M') %>
+      </span>
+      <br>
+      <hr class='hr-gray-lighter-less'>
+      <span class='text-primary'><i class='fas fa-map-marker-alt'></i><i class='fas fa-arrow-up'></i>&nbsp;&nbsp;Punto Partenza: </span><%= @transfer.start_point %>
+      &nbsp;&nbsp;<small class='text-grey'>(<%= @transfer.start_address %>)</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-primary'><i class='fas fa-map-marker-alt'></i><i class='fas fa-arrow-down'></i>&nbsp;&nbsp;Destinazione: </span><%= @transfer.destination %>
+      &nbsp;&nbsp;&nbsp;<small class='text-grey'>(<%= @transfer.destination_address %>)</small>
+      <span class='pull-right'>
+        <span class='text-primary'><i class='fas fa-road'></i>&nbsp;&nbsp;lunghezza Percorso: </span><%= @transfer.path_lenght %>&nbsp;Km
+      </span>
+      <br>
+      <span class='pull-left'>
+        <span class='text-primary'><i class='fas fa-car-side'></i>&nbsp;&nbsp;Mezzo di trasporto:</span>
+        &nbsp;<%= @transfer.transport.name if transport?(@transfer) %>
+      </span>
+      <br>
+      <hr class='hr-gray-lighter-less'>
+      <h4>
+        <small class='text-primary'>
+          <i class='fas fa-arrow-up'></i><i class='far fa-clock'></i><i class='fas fa-arrow-down'></i>
+        </small>
+        &nbsp;<span class='text-primary'>Totale tempo trasferimento:</span>&nbsp;&nbsp;
+        minuti:&nbsp;<%= @totalminute %>&nbsp;<small class='text-grey'>(ore:&nbsp;<%= @totalhour %>)</small>
+      </h4>
+      <hr class='hr-gray-lighter-less'>
+      <span class='text-primary'>Note: </span>
+      <br><br>
+      <span><%= @transfer.note %></span>
+    </div>
+  </div>
 </div>

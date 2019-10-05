@@ -63,6 +63,30 @@ RailsAdmin.config do |config|
     label_plural "Trasferimenti"
   end
 
+  config.model "Project" do
+    visible true
+    label "Progetto"
+    label_plural "Progetti"
+  end
+
+  config.model "ProjectStatus" do
+    visible true
+    label "Stato Progetti"
+    label_plural "Stati Progetti"
+  end
+
+  config.model "ProjectTypology" do
+    visible true
+    label "Tipologia Progetti"
+    label_plural "Tipologie Progetti"
+  end
+
+  config.model "Task" do
+    visible true
+    label "Task"
+    label_plural "Task"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
