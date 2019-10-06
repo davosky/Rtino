@@ -85,7 +85,14 @@
             <li>
               <%= link_to projects_path do %>
                 <h4>
-                  <i class='fas fa-clipboard-list link-awesome'></i>&nbsp;&nbsp;&nbsp;Progetti
+                  <i class='fas fa-clipboard-list link-awesome'></i>&nbsp;&nbsp;&nbsp;Progetti in corso
+                </h4>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to completed_projects_path do %>
+                <h4>
+                  <i class='fas fa-clipboard-check link-awesome'></i>&nbsp;&nbsp;&nbsp;Progetti completati
                 </h4>
               <% end %>
             </li>

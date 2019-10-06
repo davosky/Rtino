@@ -3,8 +3,14 @@
   &nbsp;<span class='text-primary'><%= @project.name %></span>
   <span class='pull-right'>
     <h6>
-      <%= link_to projects_path, title: 'Back to the List', rel: 'tooltip' do %>
-        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+      <% if completed?(@project) %>
+        <%= link_to completed_projects_path, title: 'Back to the List', rel: 'tooltip' do %>
+          <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+        <% end %>
+      <% else %>
+        <%= link_to projects_path, title: 'Back to the List', rel: 'tooltip' do %>
+          <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+        <% end %>
       <% end %>
       &nbsp;|&nbsp;
       <%= link_to edit_project_path(@project), title: 'Edit the current Location', rel: 'tooltip' do %>

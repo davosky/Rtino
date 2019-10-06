@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :tasks
-  resources :projects
+  resources :projects do
+    collection do
+      get :completed
+    end
+  end
   resources :project_statuses
   resources :project_typologies
   resources :transfers
@@ -19,7 +23,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users
   root to: "home#index"
-
   get "home/index"
   get "home/howto"
   get "home/about"

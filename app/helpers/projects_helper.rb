@@ -26,4 +26,8 @@ module ProjectsHelper
   def project_typology?(project)
     project.project_typology.name if project.project_typology_id != nil
   end
+
+  def completed?(project)
+    project.project_status_id == 2
+  end
 end
