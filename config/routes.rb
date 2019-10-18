@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   end
   resources :project_statuses
   resources :project_typologies
-  resources :transfers
+  resources :transfers do
+    collection do
+      get :pdfprinttransfers
+    end
+  end
   resources :transports
   resources :assistances
   resources :offices

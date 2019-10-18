@@ -1,0 +1,63 @@
+$web-font-path: 'https://fonts.googleapis.com/css?family=Oswald&display=swap' !default;
+@import url($web-font-path);
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.table-striped {
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.text-primary {
+  color: #29487d;
+}
+
+.hr-primary {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #29487d;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.report {
+  background-color: #ebf7f6;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+@page {
+  size: A4;
+  orientation: landscape;
+  margin: 0;
+}
+
+@media print {
+  .page {
+    margin: 0;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always;
+  }
+}

@@ -1,0 +1,68 @@
+<h3>
+  <%= inline_svg('transfer_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Elenco Trasferimenti per Stampa</span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<%= search_form_for @q, id: 'search-form', url: pdfprinttransfers_transfers_path do |f| %>
+<div class='row'>
+  <div class='col col-lg-3'>
+    <div class='field'>
+      <%= f.label 'Data Inizio:', class: 'font-lite' %><br>
+      <%= f.text_field :transfer_date_gteq, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label 'Data Fine:', class: 'font-lite' %><br>
+      <%= f.text_field :transfer_date_lteq, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='col col-lg-3'>
+    <div class='field'>
+      <%= f.label 'Luogo Partenza:', class: 'font-lite' %><br>
+      <%= f.text_field :start_point_cont, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label 'Luogo Arrivo:', class: 'font-lite' %><br>
+      <%= f.text_field :destination_cont, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='col col-lg-3'>
+    <br>
+    <div class='form-actions'>
+      <%= button_tag type: 'submit', class: 'btn btn-success btn-sm btn-block' do %>
+      <i class='fas fa-search'></i>&nbsp;&nbsp;Cerca&nbsp;&nbsp;&nbsp;
+    <% end %>
+  </div>
+  <hr class='hr-gray-lighter-less'>
+  <!-- PDF PRINT -->
+  <% if printable?(@transfers) %>
+    <%= link_to pdfprinttransfers_transfers_path(request.parameters.merge(format: 'pdf')), target: 'new', class: 'btn btn-info btn-sm btn-block' do %>
+      <i class='fas fa-print'></i>&nbsp;&nbsp;Stampa Elenco Trasferimenti
+    <% end %>
+  <% end %>
+</div>
+</div>
+<% end %>
+<br>
+<hr class='hr-gray-lighter-less'>
+<br>
+<table class='table table-striped'>
+<thead>
+<tr>
+<th class='font-lite text-primary'>Data:</th>
+<th class='font-lite text-primary'>Origine:</th>
+<th class='font-lite text-primary'>Destinazione:</th>
+<th class='font-lite text-primary'>Km Percorso:</th>
+</tr>
+</thead>
+<tbody>
+<% @transfers.each do |transfer| %>
+<tr>
+  <td><%= transfer_date?(transfer) %></td>
+  <td><%= transfer.start_point %></td>
+  <td><%= transfer.destination %></td>
+  <td><%= transfer.path_lenght %></td>
+</tr>
+<% end %>
+</tbody>
+</table>

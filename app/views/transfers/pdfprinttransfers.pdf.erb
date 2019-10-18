@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'/>
+    <%= stylesheet_link_tag wicked_pdf_asset_base64('pdfprinttransfers') %>
+    <title>Elenco Trasferimenti</title>
+  </head>
+  <body>
+    <div class='text-centered'>
+      <%= inline_svg('pdf_header.svg', size: '680px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+    </div>
+    <hr class='hr-primary'>
+    <span class='text-primary'>
+      <small>
+        Elenco trasferimenti di:&nbsp;&nbsp;<%= @user.name %>&nbsp;<%= @user.forename %>
+      </small>
+    </span>
+    <span class='pull-right text-primary'>
+      <small>
+        <%= @user.department %>
+        &nbsp;|&nbsp;
+        <%= @user.office %>
+      </small>
+    </span>
+    <br><br>
+    <table class='table table-striped'>
+      <tbody>
+        <% @transferssum = 0 %>
+        <% @transfers.each do |transfer| %>
+          <tr>
+            <td><small><%= transfer_date?(transfer) %></small></td>
+            <td><small><%= transfer.start_point %></small></td>
+            <td><small><%= transfer.destination %></small></td>
+            <td><small><%= transfer.path_lenght %></small></td>
+          </tr>
+          <% @transferpathlenght = transfer.path_lenght %>
+          <% @transferssum = @transferpathlenght + @transferssum %>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <div>
+      <h4 calaas='text-primary'>
+        Totale Chilometri Percorsi:&nbsp;
+        <span class='text-info'>
+          <%= @transferssum %>
+        </span>
+      </h4>
+    </div>
+  </body>
+</html>

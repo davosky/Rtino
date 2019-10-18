@@ -19,6 +19,19 @@ class TransfersController < ApplicationController
     @totalhour = (@totaltime / 1.hour).round(2)
   end
 
+  def pdfprinttransfers
+    @user = current_user
+    @q = Transfer.ransack(params[:q])
+    @transfers = @q.result(distinct: true).order(transfer_date: 'DESC').where(user_id: current_user.id).paginate(page: params[:page], per_page: 100)
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf { render template: 'transfers/pdfprinttransfers', pdf: 'pdfprinttransfers', orientation: 'Landscape' }
+    end
+    @transferpathlenght
+    @transferssum
+  end
+
   def new
     @transfer = Transfer.new
   end
