@@ -1,0 +1,66 @@
+<%= form_with(model: vendor, local: true) do |f| %>
+  <% if vendor.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(vendor.errors.count, 'error') %> Non posso salvare il seguente Venditore causa errori:</h2>
+      <ul>
+        <% vendor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='col col-lg-6'>
+    <div class='field'>
+      <%= f.label :name, class: 'text-primary font-lite' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :vat_number, class: 'text-primary font-lite' %>
+      <%= f.text_field :vat_number, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :address, class: 'text-primary font-lite' %>
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :zip, class: 'text-primary font-lite' %>
+      <%= f.text_field :zip, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :city, class: 'text-primary font-lite' %>
+      <%= f.text_field :city, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='col col-lg-6'>
+    <div class='field'>
+      <%= f.label :state_province, class: 'text-primary font-lite' %>
+      <%= f.text_field :state_province, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :phone, class: 'text-primary font-lite' %>
+      <%= f.text_field :phone , class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :fax, class: 'text-primary font-lite' %>
+      <%= f.text_field :fax, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :email, class: 'text-primary font-lite' %>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :pec, class: 'text-primary font-lite' %>
+      <%= f.text_field :pec, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-lg-12'>
+      <hr class='hr-gray-lighter-less'>
+      <div class='form-group'>
+        <%= button_tag(type: 'submit', class: 'btn btn-success btn-sm font-lite') do %>
+          <i class='fas fa-save'></i>&nbsp;&nbsp;SALVA
+        <% end %>
+      </div>
+    </div>
+    </div>
+<% end %>

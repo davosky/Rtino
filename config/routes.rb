@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :purchases
+  resources :vendors
+  resources :purchase_typologies
   resources :tasks
   resources :projects do
     collection do

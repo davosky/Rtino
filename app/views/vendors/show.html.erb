@@ -1,0 +1,48 @@
+<h3>
+  <%= inline_svg('vendor_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'><%= @vendor.name %></span>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to vendors_path, title: 'Back to the List', rel: 'tooltip' do %>
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to edit_vendor_path(@vendor), title: 'Edit the current Location', rel: 'tooltip' do %>
+        <span class='text-warning'><i class='fas fa-pencil-alt'></i></span>&nbsp;&nbsp;Modifica
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to @vendor, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare il Rapporto corrente?' }, title: 'Delete the current Location', rel: 'tooltip' do %>
+        <span class='text-danger'><i class='fas fa-trash-alt'></i></span>&nbsp;&nbsp;Elimina
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='panel panel-primary'>
+  <div class='panel-body'>
+    <div>
+      <span class='text-primary'><i class='fas fa-user'></i>&nbsp;&nbsp;Ragione Sociale: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.name %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-primary'><i class="fas fa-money-check"></i>&nbsp;&nbsp;Partita IVA: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.vat_number %>
+    </div>
+    <hr class='hr-gray-lighter-less'>
+    <div>
+      <span class='text-primary'>Indirizzo: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.address %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-primary'>Cap: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.zip %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-primary'>Comune: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.city %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-primary'>Provincia/stato: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.state_province %>
+      <hr class='hr-gray-lighter-less'>
+      <span class='text-primary'>Telefono: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.phone %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-primary'>Fax: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.fax %>
+      <br>
+      <span class='text-primary'>E-Mail: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.email %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='text-primary'>Pec: </span>&nbsp;&nbsp;&nbsp;<%= @vendor.pec %>
+    </div>
+  </div>
+</div>

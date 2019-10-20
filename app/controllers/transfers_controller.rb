@@ -5,7 +5,7 @@ class TransfersController < ApplicationController
 
   def index
     @q = Transfer.ransack(params[:q])
-    @transfers = @q.result(distinct: true).order(transfer_date: 'DESC').where(user_id: current_user.id).paginate(page: params[:page], per_page: 6)
+    @transfers = @q.result(distinct: true).order(transfer_date: 'DESC').where(user_id: current_user.id).paginate(page: params[:page], per_page: 9)
     respond_to do |format|
       format.html
       format.json

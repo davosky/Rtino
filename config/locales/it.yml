@@ -141,6 +141,55 @@ it:
         project: Progetto
         created_at: Ctreato il
         updated_at: Aggiornato il
+      purchase_typology:
+        name: Nome
+        position: Posizione
+        purchases: Acquisti
+        user: Utente
+        user_id: Utente
+        created_at: Ctreato il
+        updated_at: Aggiornato il
+      vendor:
+        name: Ragione Sociale
+        vat_number: Partita IVA
+        address: Indirizzo
+        zip: Cap
+        city: Comune
+        state_province: Provincia - Stato
+        phone: Telefono
+        fax: Fax
+        email: E-Mail
+        pec: Pec
+        purchases: Acquisti
+        user: Utente
+        user_id: Utente
+        created_at: Ctreato il
+        updated_at: Aggiornato il
+      purchase:
+        name: Codice
+        location: Posizione
+        location_id: Posizione
+        structure: Struttura
+        structure_id: Struttura
+        category: Categoria
+        category_id: Categoria
+        request_person: Richiedente
+        request_date: Data Richiesta Acquisto
+        purchase_approval_date: Data Approvazione Acquisto
+        purchase_approval_person: Acquisto approvato da
+        purchase_date: Data Acquisto
+        purchase_typology: Tipologia Pagamento
+        purchase_typology_id: Tipologia Pagamento
+        vendor: Venditore
+        vendor_id: Venditore
+        amount: Ammontare
+        delivery_date: Data Consegna
+        installation_date: Data Installazione
+        description: Descrizione
+        user: Utente
+        user_id: Utente
+        created_at: Ctreato il
+        updated_at: Aggiornato il
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

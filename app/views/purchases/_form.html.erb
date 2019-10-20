@@ -1,0 +1,92 @@
+<%= form_with(model: purchase, local: true) do |f| %>
+  <% if purchase.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(purchase.errors.count, 'error') %> Non posso salvare il seguente Acquisto causa errori:</h2>
+      <ul>
+        <% purchase.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='col col-lg-6'>
+    <div class='field'>
+      <%= f.label :location_id, class: 'text-primary font-lite' %>
+      <%= f.collection_select(:location_id, Location.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+    </div>
+    <div class='field'>
+      <%= f.label :structure_id, class: 'text-primary font-lite' %>
+      <%= f.collection_select(:structure_id, Structure.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+    </div>
+    <div class='field'>
+      <%= f.label :category_id, class: 'text-primary font-lite' %>
+      <%= f.collection_select(:category_id, Category.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+    </div>
+    <div class='field'>
+      <%= f.label :request_person, class: 'text-primary font-lite' %>
+      <%= f.text_field :request_person, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :request_date, class: 'text-primary font-lite' %>
+      <%= f.text_field :request_date, class: 'datepicker form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :purchase_approval_date, class: 'text-primary font-lite' %>
+      <%= f.text_field :purchase_approval_date, class: 'datepicker form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :purchase_approval_person, class: 'text-primary font-lite' %>
+      <%= f.text_field :purchase_approval_person, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='col col-lg-6'>
+    <div class='field'>
+      <%= f.label :purchase_date, class: 'text-primary font-lite' %>
+      <%= f.text_field :purchase_date, class: 'datepicker form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :purchase_typology_id, class: 'text-primary font-lite' %>
+      <%= f.collection_select(:purchase_typology_id, PurchaseTypology.where(user_id: current_user.id).order('position ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+    </div>
+    <div class='field'>
+      <%= f.label :vendor_id, class: 'text-primary font-lite' %>
+      <%= f.collection_select(:vendor_id, Vendor.where(user_id: current_user.id).order('name ASC'), :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+    </div>
+    <div class='field'>
+      <%= f.label :amount, class: 'text-primary font-lite' %>
+      <%= f.text_field :amount, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :delivery_date, class: 'text-primary font-lite' %>
+      <%= f.text_field :delivery_date, class: 'datepicker form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :description, class: 'text-primary font-lite' %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+    <div class='field'>
+      <%= f.label :installation_date, class: 'text-primary font-lite' %>
+      <%= f.text_field :installation_date, class: 'datepicker form-control' %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-lg-12'>
+      <hr class='hr-gray-lighter-less'>
+      <br>
+      <div class='form-group'>
+        <%= button_tag(type: 'submit', class: 'btn btn-success btn-sm font-lite') do %>
+          <i class='fas fa-save'></i>&nbsp;&nbsp;SALVA
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script>
+  $(document).ready(function () {
+    $('.datepicker').datepicker({
+      language: 'it',
+      todayBtn: 'linked',
+      orientation: 'bottom auto'
+    });
+  });
+</script>

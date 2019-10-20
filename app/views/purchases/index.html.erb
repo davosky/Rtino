@@ -1,0 +1,61 @@
+<h3>
+  <%= inline_svg('purchase_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Acquisti</span>
+  <span class='pull-right'>
+    <h6>
+    <%= link_to new_purchase_path do %>
+      <%= inline_svg('purchase_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+      Nuovo Acquisto
+    <% end %>
+  </h6>
+</span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='container-fluid'>
+<% @purchases.each_slice(3)  do |purchases| %>
+  <div class='row'>
+    <% purchases.each  do |purchase| %>
+      <div class='col-lg-4'>
+        <div class='panel panel-primary'>
+          <div class='panel-body'>
+            <%= link_to purchase do %>
+            <h3>
+              <span class='text-primary'>
+                <%= inline_svg('purchase_icon.svg', size: '26px * 26px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              </span>
+            <% end %>
+            <span class='pull-right'>
+              <small class='text-primary'>
+                <i class='far fa-calendar-alt'></i>&nbsp;
+                <%= purchase_date?(purchase) %>
+              </small>
+            </span>
+          </h3>
+          <hr class='hr-gray-lighter-less'>
+          <span class='pull-left'>
+            <small>
+              <i class='fas fa-map-marker-alt text-primary'></i>&nbsp;<%= location?(purchase) %>
+            </small>
+          </span>
+          <span class='pull-right'>
+            <small>
+              <i class='far fa-building text-primary'></i>&nbsp;<%= structure?(purchase) %></small>
+          </span>
+          <br>
+          <hr class='hr-gray-lighter-less'>
+          <span class='pull-left'>
+            <small>
+              <i class='fas fa-shopping-cart text-primary'></i>&nbsp;<%= purchase.description %></small>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% end %>
+<br>
+<span class='text-centered'>
+<%= will_paginate @purchases, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
+</span>
+</div>

@@ -1,0 +1,56 @@
+<h3>
+  <%= inline_svg('purchase_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Acquisto n°:&nbsp;<%= @purchase.name %></span>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to purchases_path, title: 'Back to the List', rel: 'tooltip' do %>
+        <span class='link-return'><i class='fas fa-arrow-left'></i></span>&nbsp;&nbsp;Ritorna alla Lista
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to edit_purchase_path(@purchase), title: 'Edit the current Location', rel: 'tooltip' do %>
+        <span class='text-warning'><i class='fas fa-pencil-alt'></i></span>&nbsp;&nbsp;Modifica
+      <% end %>
+      &nbsp;|&nbsp;
+      <%= link_to @purchase, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare il Rapporto corrente?' }, title: 'Delete the current Location', rel: 'tooltip' do %>
+        <span class='text-danger'><i class='fas fa-trash-alt'></i></span>&nbsp;&nbsp;Elimina
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='panel panel-primary'>
+  <div class='panel-body'>
+    <div>
+      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data Acquisto: </span>&nbsp;&nbsp;<%= purchase_date?(@purchase) %>
+      <br><br>
+      <span class='text-primary'><i class='fas fa-map-marker-alt'></i>&nbsp;&nbsp;Posizione: </span>&nbsp;&nbsp;<%= location?(@purchase) %>
+      &nbsp;
+      <span class='text-primary'><i class='far fa-building'></i>&nbsp;&nbsp;Struttura: </span>&nbsp;&nbsp;<%= structure?(@purchase) %>
+      &nbsp;
+      <span class='text-primary'><i class='far fa-building'></i>&nbsp;&nbsp;Categoria: </span>&nbsp;&nbsp;<%= category?(@purchase) %>
+      <span class="pull-right">
+        <span class='text-primary'><i class='fas fa-user'></i>&nbsp;&nbsp;Persona Richiedente: </span>&nbsp;&nbsp;<%= @purchase.request_person %>
+      </span>
+      <br><br>
+      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data Richiesta Acquisto: </span>&nbsp;&nbsp;<%= request_date?(@purchase) %>
+      &nbsp;
+      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data Approvazione Acquisto: </span>&nbsp;&nbsp;<%= purchase_approval_date?(@purchase) %>
+      <span class="pull-right">
+        <span class='text-primary'><i class='fas fa-user-alt'></i>&nbsp;&nbsp;Acquisto approvato da: </span>&nbsp;&nbsp;<%= @purchase.purchase_approval_person %>
+      </span>
+      <br><br>
+      <span class='text-primary'><i class='far fa-credit-card'></i>&nbsp;&nbsp;Tipologia Pagamento: </span>&nbsp;&nbsp;<%= purchase_typology?(@purchase) %>
+      &nbsp;
+      <span class='text-primary'><i class="fas fa-wallet"></i>&nbsp;&nbsp;Ammontare: </span>&nbsp;&nbsp;<%= number_to_currency(@purchase.amount) %>
+      &nbsp;
+      <span class='text-primary'><i class='fas fa-map-marker-alt'></i>&nbsp;&nbsp;Venditore: </span>&nbsp;&nbsp;<%= vendor?(@purchase) %>
+      <br><br>
+      <span class='text-primary'><i class='fas fa-user'></i>&nbsp;&nbsp;Descrizione Acquisto: </span>&nbsp;&nbsp;<%= @purchase.description %>
+      <br><br>
+      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data Consegna: </span>&nbsp;&nbsp;<%= delivery_date?(@purchase) %>
+      &nbsp;
+      <span class='text-primary'><i class='far fa-calendar-alt'></i>&nbsp;&nbsp;Data Installazione: </span>&nbsp;&nbsp;<%= installation_date?(@purchase) %>
+    </div>
+  </div>
+</div>

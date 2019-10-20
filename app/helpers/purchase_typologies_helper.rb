@@ -1,0 +1,2 @@
+module PurchaseTypologiesHelper
+end

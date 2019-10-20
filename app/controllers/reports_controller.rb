@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
 
   def index
     @q = Report.ransack(params[:q])
-    @reports = @q.result(distinct: true).order(date: "DESC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 6)
+    @reports = @q.result(distinct: true).order(date: "DESC").where(user_id: current_user.id).paginate(page: params[:page], per_page: 9)
     respond_to do |format|
       format.html
       format.json

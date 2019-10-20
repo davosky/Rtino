@@ -1,0 +1,58 @@
+<h3>
+  <%= inline_svg('vendor_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Venditori</span>
+  <span class='pull-right'>
+    <h6>
+      <% if admin? %>
+        <%= link_to new_vendor_path do %>
+        <%= inline_svg('vendor_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+        Nuovo Venditore
+      <% end %>
+    <% end %>
+  </h6>
+</span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='container-fluid'>
+<% @vendors.each_slice(3)  do |vendors| %>
+  <div class='row'>
+    <% vendors.each  do |vendor| %>
+      <div class='col-lg-4'>
+        <div class='panel panel-primary'>
+          <div class='panel-body'>
+            <%= link_to vendor do %>
+            <h3>
+              <span class='text-primary'>
+                <%= inline_svg('vendor_icon.svg', size: '26px * 26px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              </span>
+            <% end %>
+            <span class='pull-right'>
+              <small class='text-primary'>
+                <i class='far fa-user'></i>&nbsp;
+                <%= vendor.name %>
+              </small>
+            </span>
+          </h3>
+          <hr class='hr-gray-lighter-less'>
+          <span class='pull-left'>
+            <small>
+              <i class="fas fa-money-check"></i>&nbsp;<%= vendor.vat_number %>
+            </small>
+          </span>
+          <span class='pull-right'>
+            <small>
+              <i class="fas fa-city"></i>&nbsp;<%= vendor.city %>
+            </small>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% end %>
+<br>
+<span class='text-centered'>
+<%= will_paginate @vendors, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
+</span>
+</div>

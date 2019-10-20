@@ -1,0 +1,48 @@
+<h3>
+  <%= inline_svg('purchase_typology_icon.svg', size: '32px * 32px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+  &nbsp;<span class='text-primary'>Tipologie Acquisto</span>
+  <span class='pull-right'>
+    <h6>
+      <%= link_to new_purchase_typology_path do %>
+        <%= inline_svg('purchase_typology_icon.svg', size: '18px * 18px', preserve_aspect_ratio: 'xMaxYMax meet') %>
+        Nuova Tipologia Acquisto
+      <% end %>
+    </h6>
+  </span>
+</h3>
+<hr class='hr-primary'>
+<br>
+<div class='panel panel-default'>
+  <div class='panel-body'>
+    <table class='table table-hover'>
+      <thead>
+        <tr>
+          <td>Nome</td>
+          <td>Posizione</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @purchase_typologies.each do |purchase_typology| %>
+          <tr>
+            <td class='text-primary'><%= purchase_typology.name %></td>
+            <td class='text-primary'><%= purchase_typology.position %></td>
+            <td>
+              <%= link_to edit_purchase_typology_path(purchase_typology), title: 'Modifica l\'Ufficio Corrente', rel: 'tooltip' do %>
+                <i class='fas fa-pencil-alt text-warning'></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to purchase_typology, method: :delete, data: { confirm: 'Sei sicura/o di voler eliminare la Tipologia Corrente?' }, title: 'Elimina l\'Ufficio Corrente', rel: 'tooltip' do %>
+                <i class='fas fa-trash-alt text-danger'></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <span class='text-centered'>
+      <%= will_paginate @purchase_typologies, previous_label: 'Precedente', next_label: 'Prossima', renderer: BootstrapPagination::Rails %>
+    </span>
+  </div>
+</div>

@@ -87,6 +87,24 @@ RailsAdmin.config do |config|
     label_plural "Task"
   end
 
+  config.model "PurchaseTypology" do
+    visible true
+    label "Tipologia Pagamento"
+    label_plural "Tipologie Pagamento"
+  end
+
+  config.model "Purchase" do
+    visible true
+    label "Acquisto"
+    label_plural "Acquisti"
+  end
+
+  config.model "Vendor" do
+    visible true
+    label "Venditore"
+    label_plural "Venditori"
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

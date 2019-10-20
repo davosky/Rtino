@@ -14,4 +14,7 @@ class User < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :project_statuses, dependent: :destroy
   has_many :project_typologies, dependent: :destroy
+  has_many :purchases, dependent: :destroy
+  has_many :purchase_typologies, dependent: :destroy
+  has_many :vendors, dependent: :destroy
 end
