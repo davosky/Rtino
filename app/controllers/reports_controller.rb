@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
       format.html
       format.json
       format.pdf { render template: "reports/pdfprint", pdf: "pdfprint" }
+      format.xlsx
     end
   end
 
@@ -32,6 +33,7 @@ class ReportsController < ApplicationController
       format.html
       format.json
       format.pdf { render template: "reports/pdfprintreport", pdf: "pdfprintreport" }
+      format.xlsx
     end
   end
 

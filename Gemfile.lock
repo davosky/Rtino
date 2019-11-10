@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/randym/axlsx.git
+  revision: c8ac844572b25fda358cc01d2104720c4c42f450
+  ref: c8ac844
+  specs:
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (>= 1.6.6)
+      rubyzip (>= 1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -51,6 +62,9 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.6.1.1)
       execjs
+    axlsx_rails (0.6.0)
+      actionpack (>= 3.1)
+      caxlsx (>= 3.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.5)
@@ -72,6 +86,11 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    caxlsx (3.0.0)
+      htmlentities (~> 4.3, >= 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (~> 1.8, >= 1.8.2)
+      rubyzip (~> 1.2, >= 1.2.1)
     childprocess (2.0.0)
       rake (< 13.0)
     cocoon (1.2.14)
@@ -100,6 +119,7 @@ GEM
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
+    htmlentities (4.3.4)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     inline_svg (1.5.2)
@@ -274,6 +294,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  axlsx!
+  axlsx_rails
   bootsnap (>= 1.1.0)
   bootstrap-datepicker-rails (~> 1.8, >= 1.8.0.1)
   bootstrap-sass (~> 3.4, >= 3.4.1)
@@ -297,6 +319,7 @@ DEPENDENCIES
   rails_admin (~> 2.0)
   rails_admin-i18n
   ransack (~> 2.3)
+  rubyzip (>= 1.2.1)
   sassc-rails (~> 2.1, >= 2.1.2)
   selenium-webdriver
   spring

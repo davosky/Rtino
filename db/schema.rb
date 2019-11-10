@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_10_19_103527) do
 
-  create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "name"
     t.bigint "report_id"
     t.time "start_time"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["report_id"], name: "index_assistances_on_report_id"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
-  create_table "offices", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "offices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_offices_on_user_id"
   end
 
-  create_table "project_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "project_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_project_statuses_on_user_id"
   end
 
-  create_table "project_typologies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "project_typologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_project_typologies_on_user_id"
   end
 
-  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.date "start_date"
     t.date "end_date"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["vendor_id"], name: "index_purchases_on_vendor_id"
   end
 
-  create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "name"
     t.date "date"
     t.bigint "location_id"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
-  create_table "structures", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "structures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_structures_on_user_id"
   end
 
-  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.date "start_date"
     t.date "end_date"
@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
-  create_table "transfers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "transfers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "name"
     t.date "transfer_date"
     t.time "departure"
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_transfers_on_user_id"
   end
 
-  create_table "transports", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "transports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_103527) do
     t.index ["user_id"], name: "index_transports_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "user_type", default: "regular", null: false
     t.string "name", default: "", null: false
     t.string "forename", default: "", null: false

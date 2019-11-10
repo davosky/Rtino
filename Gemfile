@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
@@ -23,6 +25,7 @@ gem 'rails_admin', '~> 2.0'
 gem 'rails_admin-i18n'
 gem 'rails-i18n', '~> 5.1', '>= 5.1.2'
 gem 'ransack', '~> 2.3'
+gem 'rubyzip', '>= 1.2.1'
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'

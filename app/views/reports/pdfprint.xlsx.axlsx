@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Rapporti') do |sheet|
+  wb.styles do |s|
+  black_cell = s.add_style :bg_color => "ff0000", :fg_color => "FF", :sz => 10, :alignment => { :horizontal=> :center }
+  currency = wb.styles.add_style :num_fmt => 5
+  sheet.add_row ['' ]
+  sheet.add_row ['RAPPORTI' ]
+  sheet.add_row ['' ]
+  sheet.add_row ['Codice', 'Data', 'Luogo', 'Struttura', 'Tecnico']
+  @reports.each do |report|
+    sheet.add_row [report.name, report.date, report.location.name, report.structure.name, report.user.name + ' ' + report.user.forename]
+  end
+  end
+end

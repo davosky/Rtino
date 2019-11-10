@@ -27,6 +27,7 @@ class TransfersController < ApplicationController
       format.html
       format.json
       format.pdf { render template: 'transfers/pdfprinttransfers', pdf: 'pdfprinttransfers', orientation: 'Landscape' }
+      format.xlsx
     end
     @transferpathlenght
     @transferssum

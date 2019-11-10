@@ -1,0 +1,30 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Rapporti') do |sheet|
+  wb.styles do |s|
+  turquise_cell = s.add_style :bg_color => "52b8d2", :fg_color => "FFF", :sz => 12, :alignment => { :horizontal=> :center, :vertical=> :center }
+  blue_cell = s.add_style :bg_color => "227caa", :fg_color => "FFF", :sz => 10, :alignment => { :horizontal=> :left, :vertical=> :center }
+  blue_text_cell = s.add_style :fg_color => "227caa", :sz => 10, :alignment => { :horizontal=> :left, :vertical=> :center }
+  time = wb.styles.add_style :num_fmt => 21, :alignment => { :horizontal=> :left }
+  sheet.add_row ['' ]
+  sheet.add_row ['RAPPORTI' ]
+  sheet.add_row ['' ]
+  @reports.each do |report|
+    sheet.add_row ['Codice', 'Data', 'Luogo', 'Struttura', 'Tecnico'], :style => [blue_cell, turquise_cell, turquise_cell, turquise_cell, turquise_cell]
+    sheet.add_row [report.name, report.date, report.location.name, report.structure.name, report.user.name + ' ' + report.user.forename]
+    sheet.add_row ['' ]
+    sheet.add_row ['Assistenze:'], :style => [blue_text_cell]
+    sheet.add_row ['' ]
+    sheet.add_row ['Ora Inizio', 'Ora Fine', 'Categoria', 'Ufficio']
+    report.assistances.each  do |assistance|
+      sheet.add_row [assistance.start_time, assistance.end_time, assistance.category.name,
+      if assistance.office_id != nil
+        assistance.office.name
+      else
+        assistance.office_id
+      end
+      ], :style => [time, time]
+    end
+    sheet.add_row ['' ]
+  end
+  end
+end

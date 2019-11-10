@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Trasferimenti') do |sheet|
+  wb.styles do |s|
+  black_cell = s.add_style :bg_color => "ff0000", :fg_color => "FF", :sz => 10, :alignment => { :horizontal=> :center }
+  currency = wb.styles.add_style :num_fmt => 5
+  sheet.add_row ['' ]
+  sheet.add_row ['TRASFERIMENTI' ]
+  sheet.add_row ['' ]
+  sheet.add_row ['Codice', 'Data', 'Ora Partenza', 'Luogo Partenza', 'Indirizzo Partenza', 'Ora Arrivo', 'Luogo Destinazione', 'Indirizzo Destinazione', 'Lunghezza Percorso', 'Tipologia Trasporto']
+  @transfers.each do |transfer|
+    sheet.add_row [transfer.name, transfer.transfer_date, transfer.departure, transfer.start_point, transfer.start_address, transfer.arrival, transfer.destination, transfer.destination_address, transfer.path_lenght, transfer.transport.name ]
+  end
+  end
+end
